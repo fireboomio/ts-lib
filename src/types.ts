@@ -464,7 +464,7 @@ export enum ArgumentRenderConfiguration {
   RENDER_ARGUMENT_AS_JSON_VALUE = 3
 }
 
-export interface WunderGraphConfiguration {
+export interface FireboomConfiguration {
   api?: UserDefinedApi
   apiId?: string
   environmentIds?: string[]
