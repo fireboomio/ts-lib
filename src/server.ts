@@ -108,3 +108,18 @@ export async function startServer() {
   }
   await startFastifyServer(config)
 }
+
+/**
+ * createClientRequest returns a decoded client request, used for passing it to user code
+ * @param body Request body
+ * @returns Decoded client request
+ */
+export const createClientRequest = (body: FastifyRequestBody) => {
+  // clientRequest represents the original client request that was sent initially to the WunderNode.
+  const raw = rawClientRequest(body)
+  return {
+    headers: new Headers(raw?.headers),
+    requestURI: raw?.requestURI || '',
+    method: raw?.method || 'GET'
+  }
+}
