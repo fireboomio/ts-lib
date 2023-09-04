@@ -32,7 +32,7 @@ async function readConfig() {
   }
 }
 
-async function startServer(config: FireboomConfiguration) {
+async function startFastifyServer(config: FireboomConfiguration) {
   let logLevel: string = 'debug'
   if (config.api?.serverOptions?.logger?.level) {
     const _level = resolveConfigurationVariable(config.api.serverOptions.logger.level)
@@ -71,4 +71,32 @@ async function startServer(config: FireboomConfiguration) {
   })
 
   // graceful shutdown
+
+  const host = resolveConfigurationVariable(config.api!.serverOptions!.listen!.host!)!
+  const port = +resolveConfigurationVariable(config.api!.serverOptions!.listen!.port!)!
+  // start listen
+  fastify.listen(
+    {
+      host,
+      port
+    },
+    (err, address) => {
+      if (err) {
+        logger.error('Error when start hook server', err)
+      } else {
+        logger.info(`Fireboom hook server is listening on: ${address}`)
+      }
+    }
+  )
+}
+
+export async function startServer() {
+  let config: FireboomConfiguration
+  try {
+    config = await readConfig()
+  } catch (error) {
+    logger.error((error as Error).message)
+    return
+  }
+  await startFastifyServer(config)
 }
