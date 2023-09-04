@@ -1,5 +1,6 @@
 import 'dotenv/config'
 
+import closeWithGrace from 'close-with-grace'
 import Fastify from 'fastify'
 import { readFile } from 'fs/promises'
 
@@ -71,6 +72,13 @@ async function startFastifyServer(config: FireboomConfiguration) {
   })
 
   // graceful shutdown
+  closeWithGrace({ delay: 500 }, async ({ err }) => {
+    if (err) {
+      logger.error('Error when graceful shutdown Fireboom hook server', err)
+    }
+    await fastify.close()
+    logger.info('Fireboom hook server is closed')
+  })
 
   const host = resolveConfigurationVariable(config.api!.serverOptions!.listen!.host!)!
   const port = +resolveConfigurationVariable(config.api!.serverOptions!.listen!.port!)!
@@ -82,7 +90,7 @@ async function startFastifyServer(config: FireboomConfiguration) {
     },
     (err, address) => {
       if (err) {
-        logger.error('Error when start hook server', err)
+        logger.error('Error when start Fireboom hook server', err)
       } else {
         logger.info(`Fireboom hook server is listening on: ${address}`)
       }
