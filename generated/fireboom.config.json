@@ -1,0 +1,3495 @@
+{
+  "api": {
+    "engineConfiguration": {
+      "defaultFlushInterval": 0,
+      "datasourceConfigurations": [
+        {
+          "kind": 7,
+          "rootNodes": [
+            {
+              "typeName": "Mutation",
+              "fieldNames": ["db_executeRaw", "db_queryRaw"]
+            }
+          ],
+          "childNodes": null,
+          "overrideFieldPathFromAlias": false,
+          "customRestMap": null,
+          "customRest": null,
+          "customGraphql": null,
+          "customStatic": null,
+          "customDatabase": {
+            "databaseURL": {
+              "kind": 2,
+              "placeholderVariableName": "file:/Users/erguotou/workspace/fireboom/fireboom-server/upload/sqlite/db.db"
+            },
+            "prismaSchema": "",
+            "graphqlSchema": "",
+            "closeTimeoutSeconds": 0,
+            "jsonTypeFields": null,
+            "jsonInputVariables": null
+          },
+          "directives": null,
+          "requestTimeoutSeconds": 0,
+          "id": "db"
+        },
+        {
+          "kind": 4,
+          "rootNodes": [
+            {
+              "typeName": "Query",
+              "fieldNames": [
+                "local_findFirstPermission",
+                "local_findFirstPermissionOrThrow",
+                "local_findManyPermission",
+                "local_aggregatePermission",
+                "local_groupByPermission",
+                "local_findUniquePermission",
+                "local_findUniquePermissionOrThrow",
+                "local_findFirstRole",
+                "local_findFirstRoleOrThrow",
+                "local_findManyRole",
+                "local_aggregateRole",
+                "local_groupByRole",
+                "local_findUniqueRole",
+                "local_findUniqueRoleOrThrow",
+                "local_findFirstT",
+                "local_findFirstTOrThrow",
+                "local_findManyT",
+                "local_aggregateT",
+                "local_groupByT",
+                "local_findUniqueT",
+                "local_findUniqueTOrThrow",
+                "local_findFirstUser",
+                "local_findFirstUserOrThrow",
+                "local_findManyUser",
+                "local_aggregateUser",
+                "local_groupByUser",
+                "local_findUniqueUser",
+                "local_findUniqueUserOrThrow"
+              ],
+              "quotes": {
+                "26": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "0": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "4": {
+                  "indexes": [12, 6, 7, 8, 9, 10]
+                },
+                "10": {
+                  "indexes": [16, 13, 14, 15]
+                },
+                "18": {
+                  "indexes": [25, 19, 20, 21, 22, 23]
+                },
+                "17": {
+                  "indexes": [24, 19, 20, 21, 22, 23]
+                },
+                "19": {
+                  "indexes": [18]
+                },
+                "23": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "5": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "7": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "9": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "25": {
+                  "indexes": [30, 26, 27, 28]
+                },
+                "3": {
+                  "indexes": [11, 6, 7, 8, 9, 10]
+                },
+                "27": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "6": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "8": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "11": {
+                  "indexes": [17, 13, 14, 15]
+                },
+                "24": {
+                  "indexes": [29, 26, 27, 28]
+                },
+                "14": {
+                  "indexes": [18]
+                },
+                "21": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "22": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "20": {
+                  "indexes": [18]
+                },
+                "2": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "13": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "1": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "12": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "15": {
+                  "indexes": [18]
+                },
+                "16": {
+                  "indexes": [18]
+                }
+              }
+            },
+            {
+              "typeName": "Mutation",
+              "fieldNames": [
+                "local_createOnePermission",
+                "local_upsertOnePermission",
+                "local_createManyPermission",
+                "local_deleteOnePermission",
+                "local_updateOnePermission",
+                "local_updateManyPermission",
+                "local_deleteManyPermission",
+                "local_createOneRole",
+                "local_upsertOneRole",
+                "local_createManyRole",
+                "local_deleteOneRole",
+                "local_updateOneRole",
+                "local_updateManyRole",
+                "local_deleteManyRole",
+                "local_createOneT",
+                "local_upsertOneT",
+                "local_createManyT",
+                "local_deleteOneT",
+                "local_updateOneT",
+                "local_updateManyT",
+                "local_deleteManyT",
+                "local_createOneUser",
+                "local_upsertOneUser",
+                "local_createManyUser",
+                "local_deleteOneUser",
+                "local_updateOneUser",
+                "local_updateManyUser",
+                "local_deleteManyUser",
+                "local_executeRaw",
+                "local_queryRaw"
+              ],
+              "quotes": {
+                "22": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "27": {
+                  "indexes": [31]
+                },
+                "7": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "8": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "26": {
+                  "indexes": [31]
+                },
+                "1": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "2": {
+                  "indexes": [31]
+                },
+                "11": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "17": {
+                  "indexes": [18]
+                },
+                "5": {
+                  "indexes": [31]
+                },
+                "10": {
+                  "indexes": [3, 5, 4, 1, 0, 2]
+                },
+                "12": {
+                  "indexes": [31]
+                },
+                "0": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "9": {
+                  "indexes": [31]
+                },
+                "13": {
+                  "indexes": [31]
+                },
+                "16": {
+                  "indexes": [31]
+                },
+                "19": {
+                  "indexes": [31]
+                },
+                "3": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "4": {
+                  "indexes": [5, 3, 1, 0, 2, 4]
+                },
+                "18": {
+                  "indexes": [18]
+                },
+                "20": {
+                  "indexes": [31]
+                },
+                "21": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "23": {
+                  "indexes": [31]
+                },
+                "24": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                },
+                "14": {
+                  "indexes": [18]
+                },
+                "15": {
+                  "indexes": [18]
+                },
+                "6": {
+                  "indexes": [31]
+                },
+                "25": {
+                  "indexes": [1, 3, 5, 4, 2, 0]
+                }
+              }
+            }
+          ],
+          "childNodes": [
+            {
+              "typeName": "local_UserCountOutputType",
+              "fieldNames": ["Role", "_join"]
+            },
+            {
+              "typeName": "local_User",
+              "fieldNames": ["uid", "name", "Role", "_count", "_join"]
+            },
+            {
+              "typeName": "local_RoleCountOutputType",
+              "fieldNames": ["Permission", "User", "_join"]
+            },
+            {
+              "typeName": "local_Role",
+              "fieldNames": ["code", "name", "Permission", "User", "_count", "_join"]
+            },
+            {
+              "typeName": "local_PermissionCountOutputType",
+              "fieldNames": ["Role", "_join"]
+            },
+            {
+              "typeName": "local_Permission",
+              "fieldNames": [
+                "id",
+                "name",
+                "operationPath",
+                "operationId",
+                "Role",
+                "_count",
+                "_join"
+              ]
+            },
+            {
+              "typeName": "local_PermissionCountAggregateOutputType",
+              "fieldNames": ["id", "name", "operationPath", "operationId", "_all", "_join"]
+            },
+            {
+              "typeName": "local_PermissionAvgAggregateOutputType",
+              "fieldNames": ["id", "operationId", "_join"]
+            },
+            {
+              "typeName": "local_PermissionSumAggregateOutputType",
+              "fieldNames": ["id", "operationId", "_join"]
+            },
+            {
+              "typeName": "local_PermissionMinAggregateOutputType",
+              "fieldNames": ["id", "name", "operationPath", "operationId", "_join"]
+            },
+            {
+              "typeName": "local_PermissionMaxAggregateOutputType",
+              "fieldNames": ["id", "name", "operationPath", "operationId", "_join"]
+            },
+            {
+              "typeName": "local_AggregatePermission",
+              "fieldNames": ["_count", "_avg", "_sum", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_PermissionGroupByOutputType",
+              "fieldNames": [
+                "id",
+                "name",
+                "operationPath",
+                "operationId",
+                "_count",
+                "_avg",
+                "_sum",
+                "_min",
+                "_max",
+                "_join"
+              ]
+            },
+            {
+              "typeName": "local_RoleCountAggregateOutputType",
+              "fieldNames": ["code", "name", "_all", "_join"]
+            },
+            {
+              "typeName": "local_RoleMinAggregateOutputType",
+              "fieldNames": ["code", "name", "_join"]
+            },
+            {
+              "typeName": "local_RoleMaxAggregateOutputType",
+              "fieldNames": ["code", "name", "_join"]
+            },
+            {
+              "typeName": "local_AggregateRole",
+              "fieldNames": ["_count", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_RoleGroupByOutputType",
+              "fieldNames": ["code", "name", "_count", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_T",
+              "fieldNames": ["id", "name", "_join"]
+            },
+            {
+              "typeName": "local_TCountAggregateOutputType",
+              "fieldNames": ["id", "name", "_all", "_join"]
+            },
+            {
+              "typeName": "local_TAvgAggregateOutputType",
+              "fieldNames": ["id", "_join"]
+            },
+            {
+              "typeName": "local_TSumAggregateOutputType",
+              "fieldNames": ["id", "_join"]
+            },
+            {
+              "typeName": "local_TMinAggregateOutputType",
+              "fieldNames": ["id", "name", "_join"]
+            },
+            {
+              "typeName": "local_TMaxAggregateOutputType",
+              "fieldNames": ["id", "name", "_join"]
+            },
+            {
+              "typeName": "local_AggregateT",
+              "fieldNames": ["_count", "_avg", "_sum", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_TGroupByOutputType",
+              "fieldNames": ["id", "name", "_count", "_avg", "_sum", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_UserCountAggregateOutputType",
+              "fieldNames": ["uid", "name", "_all", "_join"]
+            },
+            {
+              "typeName": "local_UserMinAggregateOutputType",
+              "fieldNames": ["uid", "name", "_join"]
+            },
+            {
+              "typeName": "local_UserMaxAggregateOutputType",
+              "fieldNames": ["uid", "name", "_join"]
+            },
+            {
+              "typeName": "local_AggregateUser",
+              "fieldNames": ["_count", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_UserGroupByOutputType",
+              "fieldNames": ["uid", "name", "_count", "_min", "_max", "_join"]
+            },
+            {
+              "typeName": "local_AffectedRowsOutput",
+              "fieldNames": ["count", "_join"]
+            }
+          ],
+          "overrideFieldPathFromAlias": false,
+          "customRestMap": null,
+          "customRest": null,
+          "customGraphql": null,
+          "customStatic": null,
+          "customDatabase": {
+            "databaseURL": {
+              "kind": 2,
+              "placeholderVariableName": "mysql://root:@127.0.0.1:3306/fireboom-dev"
+            },
+            "prismaSchema": "",
+            "graphqlSchema": "",
+            "closeTimeoutSeconds": 0,
+            "jsonTypeFields": null,
+            "jsonInputVariables": null
+          },
+          "directives": null,
+          "requestTimeoutSeconds": 0,
+          "id": "local"
+        },
+        {
+          "kind": 1,
+          "rootNodes": [
+            {
+              "typeName": "Mutation",
+              "fieldNames": [
+                "system_batchInsertRoles_post",
+                "system_batchDeleteRoles_delete",
+                "system_getRoleBindApis_post",
+                "system_bindRoleApis_post"
+              ],
+              "quotes": {
+                "0": {
+                  "indexes": [7]
+                },
+                "2": {
+                  "indexes": [5, 0, 1, 4, 3, 2]
+                }
+              }
+            },
+            {
+              "typeName": "Query",
+              "fieldNames": ["system_getAllPublicApis_get", "system_getAllRoles_get"],
+              "quotes": {
+                "1": {
+                  "indexes": [6]
+                },
+                "0": {
+                  "indexes": [5, 0, 1, 4, 3, 2]
+                }
+              }
+            }
+          ],
+          "childNodes": [
+            {
+              "typeName": "system_Operation_authenticationConfig_object",
+              "fieldNames": ["authRequired", "_join"]
+            },
+            {
+              "typeName": "system_Operation_cacheConfig_object",
+              "fieldNames": ["public", "staleWhileRevalidate", "enabled", "maxAge", "_join"]
+            },
+            {
+              "typeName": "system_Operation_hooksConfiguration_mockResolve_object",
+              "fieldNames": ["enabled", "subscriptionPollingIntervalMillis", "_join"]
+            },
+            {
+              "typeName": "system_Operation_hooksConfiguration_object",
+              "fieldNames": [
+                "onConnectionInit",
+                "postResolve",
+                "httpTransportOnRequest",
+                "mockResolve",
+                "mutatingPostResolve",
+                "mutatingPreResolve",
+                "preResolve",
+                "customResolve",
+                "httpTransportBeforeRequest",
+                "httpTransportOnResponse",
+                "_join"
+              ]
+            },
+            {
+              "typeName": "system_Operation_liveQueryConfig_object",
+              "fieldNames": ["enabled", "pollingIntervalSeconds", "_join"]
+            },
+            {
+              "typeName": "system_Operation_object",
+              "fieldNames": [
+                "updateTime",
+                "enabled",
+                "title",
+                "configCustomized",
+                "deleteTime",
+                "remark",
+                "authenticationConfig",
+                "createTime",
+                "operationType",
+                "cacheConfig",
+                "path",
+                "liveQueryConfig",
+                "engine",
+                "hooksConfiguration",
+                "_join"
+              ]
+            },
+            {
+              "typeName": "system_Role_object",
+              "fieldNames": ["createTime", "deleteTime", "updateTime", "code", "remark", "_join"]
+            },
+            {
+              "typeName": "system_batchInsertRoles_post_object",
+              "fieldNames": ["dataName", "succeed", "_join"]
+            }
+          ],
+          "overrideFieldPathFromAlias": false,
+          "customRestMap": {
+            "Mutation.system_getRoleBindApis_post": {
+              "fetch": {
+                "url": null,
+                "method": 1,
+                "header": {},
+                "body": {
+                  "kind": 2,
+                  "placeholderVariableName": "{{ .arguments.getRoleBindApis_post_input_object }}"
+                },
+                "query": null,
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/operation/listByRole"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            },
+            "Query.system_getAllPublicApis_get": {
+              "fetch": {
+                "url": null,
+                "method": 0,
+                "header": {},
+                "body": null,
+                "query": null,
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/operation/listPublic"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            },
+            "Mutation.system_bindRoleApis_post": {
+              "fetch": {
+                "url": null,
+                "method": 1,
+                "header": {},
+                "body": {
+                  "kind": 2,
+                  "placeholderVariableName": "{{ .arguments.bindRoleApis_post_input_object }}"
+                },
+                "query": null,
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/operation/bindRoles"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            },
+            "Query.system_getAllRoles_get": {
+              "fetch": {
+                "url": null,
+                "method": 0,
+                "header": {},
+                "body": null,
+                "query": null,
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/role"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            },
+            "Mutation.system_batchInsertRoles_post": {
+              "fetch": {
+                "url": null,
+                "method": 1,
+                "header": {},
+                "body": {
+                  "kind": 2,
+                  "placeholderVariableName": "{{ .arguments.Role_input_object }}"
+                },
+                "query": null,
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/role/batch"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            },
+            "Mutation.system_batchDeleteRoles_delete": {
+              "fetch": {
+                "url": null,
+                "method": 3,
+                "header": {},
+                "body": null,
+                "query": [
+                  {
+                    "name": "dataNames",
+                    "value": "{{ .arguments.dataNames }}"
+                  }
+                ],
+                "upstreamAuthentication": null,
+                "urlEncodeBody": false,
+                "mTLS": null,
+                "baseUrl": {
+                  "kind": 0,
+                  "staticVariableContent": "http://localhost:9123/api"
+                },
+                "path": {
+                  "kind": 0,
+                  "staticVariableContent": "/role/batch"
+                }
+              },
+              "subscription": {
+                "enabled": false,
+                "pollingIntervalMillis": 0,
+                "skipPublishSameResponse": false
+              },
+              "statusCodeTypeMappings": null,
+              "defaultTypeName": ""
+            }
+          },
+          "customRest": null,
+          "customGraphql": null,
+          "customStatic": null,
+          "customDatabase": null,
+          "directives": null,
+          "requestTimeoutSeconds": 0,
+          "id": "system"
+        }
+      ],
+      "fieldConfigurations": [
+        {
+          "typeName": "Mutation",
+          "fieldName": "db_executeRaw",
+          "disableDefaultFieldMapping": false,
+          "path": ["executeRaw"],
+          "argumentsConfiguration": [
+            {
+              "name": "query",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "parameters",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 3,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "db_queryRaw",
+          "disableDefaultFieldMapping": false,
+          "path": ["queryRaw"],
+          "argumentsConfiguration": [
+            {
+              "name": "query",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "parameters",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 3,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstPermissionOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstPermissionOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findManyPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["findManyPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_aggregatePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["aggregatePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_groupByPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["groupByPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "by",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "having",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniquePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniquePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniquePermissionOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniquePermissionOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstRoleOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstRoleOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findManyRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["findManyRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_aggregateRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["aggregateRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_groupByRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["groupByRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "by",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "having",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueRoleOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueRoleOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstT",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstTOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstTOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findManyT",
+          "disableDefaultFieldMapping": false,
+          "path": ["findManyT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_aggregateT",
+          "disableDefaultFieldMapping": false,
+          "path": ["aggregateT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_groupByT",
+          "disableDefaultFieldMapping": false,
+          "path": ["groupByT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "by",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "having",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueT",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueTOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueTOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findFirstUserOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findFirstUserOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findManyUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["findManyUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "distinct",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_aggregateUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["aggregateUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "cursor",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_groupByUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["groupByUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "orderBy",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "by",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "having",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "take",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skip",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "local_findUniqueUserOrThrow",
+          "disableDefaultFieldMapping": false,
+          "path": ["findUniqueUserOrThrow"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createOnePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["createOnePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_upsertOnePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["upsertOnePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "create",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "update",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createManyPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["createManyPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skipDuplicates",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteOnePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteOnePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateOnePermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateOnePermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateManyPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateManyPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteManyPermission",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteManyPermission"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createOneRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["createOneRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_upsertOneRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["upsertOneRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "create",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "update",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createManyRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["createManyRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skipDuplicates",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteOneRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteOneRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateOneRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateOneRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateManyRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateManyRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteManyRole",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteManyRole"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createOneT",
+          "disableDefaultFieldMapping": false,
+          "path": ["createOneT"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_upsertOneT",
+          "disableDefaultFieldMapping": false,
+          "path": ["upsertOneT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "create",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "update",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createManyT",
+          "disableDefaultFieldMapping": false,
+          "path": ["createManyT"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skipDuplicates",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteOneT",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteOneT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateOneT",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateOneT"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateManyT",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateManyT"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteManyT",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteManyT"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createOneUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["createOneUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_upsertOneUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["upsertOneUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "create",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "update",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_createManyUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["createManyUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "skipDuplicates",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteOneUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteOneUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateOneUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateOneUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_updateManyUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["updateManyUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "data",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_deleteManyUser",
+          "disableDefaultFieldMapping": false,
+          "path": ["deleteManyUser"],
+          "argumentsConfiguration": [
+            {
+              "name": "where",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_executeRaw",
+          "disableDefaultFieldMapping": false,
+          "path": ["executeRaw"],
+          "argumentsConfiguration": [
+            {
+              "name": "query",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "parameters",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 3,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "local_queryRaw",
+          "disableDefaultFieldMapping": false,
+          "path": ["queryRaw"],
+          "argumentsConfiguration": [
+            {
+              "name": "query",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 0,
+              "renameTypeTo": ""
+            },
+            {
+              "name": "parameters",
+              "sourceType": 1,
+              "sourcePath": [],
+              "renderConfiguration": 3,
+              "renameTypeTo": ""
+            }
+          ],
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "system_batchInsertRoles_post",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "system_batchDeleteRoles_delete",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "system_getRoleBindApis_post",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Mutation",
+          "fieldName": "system_bindRoleApis_post",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "system_getAllPublicApis_get",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        },
+        {
+          "typeName": "Query",
+          "fieldName": "system_getAllRoles_get",
+          "disableDefaultFieldMapping": true,
+          "path": null,
+          "argumentsConfiguration": null,
+          "requiresFields": null,
+          "unescapeResponseJson": false
+        }
+      ],
+      "graphqlSchema": "",
+      "typeConfigurations": [
+        {
+          "typeName": "JSON",
+          "renameTo": "Json"
+        },
+        {
+          "typeName": "local_NestedIntFilter",
+          "renameTo": "NestedIntFilter"
+        },
+        {
+          "typeName": "local_IntFilter",
+          "renameTo": "IntFilter"
+        },
+        {
+          "typeName": "local_NestedStringFilter",
+          "renameTo": "NestedStringFilter"
+        },
+        {
+          "typeName": "local_StringFilter",
+          "renameTo": "StringFilter"
+        },
+        {
+          "typeName": "local_NestedBigIntFilter",
+          "renameTo": "NestedBigIntFilter"
+        },
+        {
+          "typeName": "local_BigIntFilter",
+          "renameTo": "BigIntFilter"
+        },
+        {
+          "typeName": "local_PermissionListRelationFilter",
+          "renameTo": "PermissionListRelationFilter"
+        },
+        {
+          "typeName": "local_UserWhereInput",
+          "renameTo": "UserWhereInput"
+        },
+        {
+          "typeName": "local_UserListRelationFilter",
+          "renameTo": "UserListRelationFilter"
+        },
+        {
+          "typeName": "local_RoleWhereInput",
+          "renameTo": "RoleWhereInput"
+        },
+        {
+          "typeName": "local_RoleListRelationFilter",
+          "renameTo": "RoleListRelationFilter"
+        },
+        {
+          "typeName": "local_PermissionWhereInput",
+          "renameTo": "PermissionWhereInput"
+        },
+        {
+          "typeName": "local_SortOrder",
+          "renameTo": "SortOrder"
+        },
+        {
+          "typeName": "local_RoleOrderByRelationAggregateInput",
+          "renameTo": "RoleOrderByRelationAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionOrderByWithRelationInput",
+          "renameTo": "PermissionOrderByWithRelationInput"
+        },
+        {
+          "typeName": "local_PermissionWhereUniqueInput",
+          "renameTo": "PermissionWhereUniqueInput"
+        },
+        {
+          "typeName": "local_PermissionScalarFieldEnum",
+          "renameTo": "PermissionScalarFieldEnum"
+        },
+        {
+          "typeName": "local_PermissionOrderByRelationAggregateInput",
+          "renameTo": "PermissionOrderByRelationAggregateInput"
+        },
+        {
+          "typeName": "local_UserOrderByRelationAggregateInput",
+          "renameTo": "UserOrderByRelationAggregateInput"
+        },
+        {
+          "typeName": "local_RoleOrderByWithRelationInput",
+          "renameTo": "RoleOrderByWithRelationInput"
+        },
+        {
+          "typeName": "local_RoleWhereUniqueInput",
+          "renameTo": "RoleWhereUniqueInput"
+        },
+        {
+          "typeName": "local_RoleScalarFieldEnum",
+          "renameTo": "RoleScalarFieldEnum"
+        },
+        {
+          "typeName": "local_UserOrderByWithRelationInput",
+          "renameTo": "UserOrderByWithRelationInput"
+        },
+        {
+          "typeName": "local_UserWhereUniqueInput",
+          "renameTo": "UserWhereUniqueInput"
+        },
+        {
+          "typeName": "local_UserScalarFieldEnum",
+          "renameTo": "UserScalarFieldEnum"
+        },
+        {
+          "typeName": "local_UserCountOutputType",
+          "renameTo": "UserCountOutputType"
+        },
+        {
+          "typeName": "local_User",
+          "renameTo": "User"
+        },
+        {
+          "typeName": "local_RoleCountOutputType",
+          "renameTo": "RoleCountOutputType"
+        },
+        {
+          "typeName": "local_Role",
+          "renameTo": "Role"
+        },
+        {
+          "typeName": "local_PermissionCountOutputType",
+          "renameTo": "PermissionCountOutputType"
+        },
+        {
+          "typeName": "local_Permission",
+          "renameTo": "Permission"
+        },
+        {
+          "typeName": "local_PermissionCountAggregateOutputType",
+          "renameTo": "PermissionCountAggregateOutputType"
+        },
+        {
+          "typeName": "local_PermissionAvgAggregateOutputType",
+          "renameTo": "PermissionAvgAggregateOutputType"
+        },
+        {
+          "typeName": "local_PermissionSumAggregateOutputType",
+          "renameTo": "PermissionSumAggregateOutputType"
+        },
+        {
+          "typeName": "local_PermissionMinAggregateOutputType",
+          "renameTo": "PermissionMinAggregateOutputType"
+        },
+        {
+          "typeName": "local_PermissionMaxAggregateOutputType",
+          "renameTo": "PermissionMaxAggregateOutputType"
+        },
+        {
+          "typeName": "local_AggregatePermission",
+          "renameTo": "AggregatePermission"
+        },
+        {
+          "typeName": "local_PermissionCountOrderByAggregateInput",
+          "renameTo": "PermissionCountOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionAvgOrderByAggregateInput",
+          "renameTo": "PermissionAvgOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionMaxOrderByAggregateInput",
+          "renameTo": "PermissionMaxOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionMinOrderByAggregateInput",
+          "renameTo": "PermissionMinOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionSumOrderByAggregateInput",
+          "renameTo": "PermissionSumOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_PermissionOrderByWithAggregationInput",
+          "renameTo": "PermissionOrderByWithAggregationInput"
+        },
+        {
+          "typeName": "local_NestedFloatFilter",
+          "renameTo": "NestedFloatFilter"
+        },
+        {
+          "typeName": "local_NestedIntWithAggregatesFilter",
+          "renameTo": "NestedIntWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_IntWithAggregatesFilter",
+          "renameTo": "IntWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_NestedStringWithAggregatesFilter",
+          "renameTo": "NestedStringWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_StringWithAggregatesFilter",
+          "renameTo": "StringWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_NestedBigIntWithAggregatesFilter",
+          "renameTo": "NestedBigIntWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_BigIntWithAggregatesFilter",
+          "renameTo": "BigIntWithAggregatesFilter"
+        },
+        {
+          "typeName": "local_PermissionScalarWhereWithAggregatesInput",
+          "renameTo": "PermissionScalarWhereWithAggregatesInput"
+        },
+        {
+          "typeName": "local_PermissionGroupByOutputType",
+          "renameTo": "PermissionGroupByOutputType"
+        },
+        {
+          "typeName": "local_RoleCountAggregateOutputType",
+          "renameTo": "RoleCountAggregateOutputType"
+        },
+        {
+          "typeName": "local_RoleMinAggregateOutputType",
+          "renameTo": "RoleMinAggregateOutputType"
+        },
+        {
+          "typeName": "local_RoleMaxAggregateOutputType",
+          "renameTo": "RoleMaxAggregateOutputType"
+        },
+        {
+          "typeName": "local_AggregateRole",
+          "renameTo": "AggregateRole"
+        },
+        {
+          "typeName": "local_RoleCountOrderByAggregateInput",
+          "renameTo": "RoleCountOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_RoleMaxOrderByAggregateInput",
+          "renameTo": "RoleMaxOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_RoleMinOrderByAggregateInput",
+          "renameTo": "RoleMinOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_RoleOrderByWithAggregationInput",
+          "renameTo": "RoleOrderByWithAggregationInput"
+        },
+        {
+          "typeName": "local_RoleScalarWhereWithAggregatesInput",
+          "renameTo": "RoleScalarWhereWithAggregatesInput"
+        },
+        {
+          "typeName": "local_RoleGroupByOutputType",
+          "renameTo": "RoleGroupByOutputType"
+        },
+        {
+          "typeName": "local_TWhereInput",
+          "renameTo": "TWhereInput"
+        },
+        {
+          "typeName": "local_TOrderByWithRelationInput",
+          "renameTo": "TOrderByWithRelationInput"
+        },
+        {
+          "typeName": "local_TWhereUniqueInput",
+          "renameTo": "TWhereUniqueInput"
+        },
+        {
+          "typeName": "local_TScalarFieldEnum",
+          "renameTo": "TScalarFieldEnum"
+        },
+        {
+          "typeName": "local_T",
+          "renameTo": "T"
+        },
+        {
+          "typeName": "local_TCountAggregateOutputType",
+          "renameTo": "TCountAggregateOutputType"
+        },
+        {
+          "typeName": "local_TAvgAggregateOutputType",
+          "renameTo": "TAvgAggregateOutputType"
+        },
+        {
+          "typeName": "local_TSumAggregateOutputType",
+          "renameTo": "TSumAggregateOutputType"
+        },
+        {
+          "typeName": "local_TMinAggregateOutputType",
+          "renameTo": "TMinAggregateOutputType"
+        },
+        {
+          "typeName": "local_TMaxAggregateOutputType",
+          "renameTo": "TMaxAggregateOutputType"
+        },
+        {
+          "typeName": "local_AggregateT",
+          "renameTo": "AggregateT"
+        },
+        {
+          "typeName": "local_TCountOrderByAggregateInput",
+          "renameTo": "TCountOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_TAvgOrderByAggregateInput",
+          "renameTo": "TAvgOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_TMaxOrderByAggregateInput",
+          "renameTo": "TMaxOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_TMinOrderByAggregateInput",
+          "renameTo": "TMinOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_TSumOrderByAggregateInput",
+          "renameTo": "TSumOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_TOrderByWithAggregationInput",
+          "renameTo": "TOrderByWithAggregationInput"
+        },
+        {
+          "typeName": "local_TScalarWhereWithAggregatesInput",
+          "renameTo": "TScalarWhereWithAggregatesInput"
+        },
+        {
+          "typeName": "local_TGroupByOutputType",
+          "renameTo": "TGroupByOutputType"
+        },
+        {
+          "typeName": "local_UserCountAggregateOutputType",
+          "renameTo": "UserCountAggregateOutputType"
+        },
+        {
+          "typeName": "local_UserMinAggregateOutputType",
+          "renameTo": "UserMinAggregateOutputType"
+        },
+        {
+          "typeName": "local_UserMaxAggregateOutputType",
+          "renameTo": "UserMaxAggregateOutputType"
+        },
+        {
+          "typeName": "local_AggregateUser",
+          "renameTo": "AggregateUser"
+        },
+        {
+          "typeName": "local_UserCountOrderByAggregateInput",
+          "renameTo": "UserCountOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_UserMaxOrderByAggregateInput",
+          "renameTo": "UserMaxOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_UserMinOrderByAggregateInput",
+          "renameTo": "UserMinOrderByAggregateInput"
+        },
+        {
+          "typeName": "local_UserOrderByWithAggregationInput",
+          "renameTo": "UserOrderByWithAggregationInput"
+        },
+        {
+          "typeName": "local_UserScalarWhereWithAggregatesInput",
+          "renameTo": "UserScalarWhereWithAggregatesInput"
+        },
+        {
+          "typeName": "local_UserGroupByOutputType",
+          "renameTo": "UserGroupByOutputType"
+        },
+        {
+          "typeName": "local_UserCreateWithoutRoleInput",
+          "renameTo": "UserCreateWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserCreateOrConnectWithoutRoleInput",
+          "renameTo": "UserCreateOrConnectWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserCreateNestedManyWithoutRoleInput",
+          "renameTo": "UserCreateNestedManyWithoutRoleInput"
+        },
+        {
+          "typeName": "local_RoleCreateWithoutPermissionInput",
+          "renameTo": "RoleCreateWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleCreateOrConnectWithoutPermissionInput",
+          "renameTo": "RoleCreateOrConnectWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleCreateNestedManyWithoutPermissionInput",
+          "renameTo": "RoleCreateNestedManyWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_PermissionCreateInput",
+          "renameTo": "PermissionCreateInput"
+        },
+        {
+          "typeName": "local_StringFieldUpdateOperationsInput",
+          "renameTo": "StringFieldUpdateOperationsInput"
+        },
+        {
+          "typeName": "local_BigIntFieldUpdateOperationsInput",
+          "renameTo": "BigIntFieldUpdateOperationsInput"
+        },
+        {
+          "typeName": "local_UserUpdateWithoutRoleInput",
+          "renameTo": "UserUpdateWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserUpsertWithWhereUniqueWithoutRoleInput",
+          "renameTo": "UserUpsertWithWhereUniqueWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserUpdateWithWhereUniqueWithoutRoleInput",
+          "renameTo": "UserUpdateWithWhereUniqueWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserScalarWhereInput",
+          "renameTo": "UserScalarWhereInput"
+        },
+        {
+          "typeName": "local_UserUpdateManyMutationInput",
+          "renameTo": "UserUpdateManyMutationInput"
+        },
+        {
+          "typeName": "local_UserUpdateManyWithWhereWithoutRoleInput",
+          "renameTo": "UserUpdateManyWithWhereWithoutRoleInput"
+        },
+        {
+          "typeName": "local_UserUpdateManyWithoutRoleNestedInput",
+          "renameTo": "UserUpdateManyWithoutRoleNestedInput"
+        },
+        {
+          "typeName": "local_RoleUpdateWithoutPermissionInput",
+          "renameTo": "RoleUpdateWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleUpsertWithWhereUniqueWithoutPermissionInput",
+          "renameTo": "RoleUpsertWithWhereUniqueWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleUpdateWithWhereUniqueWithoutPermissionInput",
+          "renameTo": "RoleUpdateWithWhereUniqueWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleScalarWhereInput",
+          "renameTo": "RoleScalarWhereInput"
+        },
+        {
+          "typeName": "local_RoleUpdateManyMutationInput",
+          "renameTo": "RoleUpdateManyMutationInput"
+        },
+        {
+          "typeName": "local_RoleUpdateManyWithWhereWithoutPermissionInput",
+          "renameTo": "RoleUpdateManyWithWhereWithoutPermissionInput"
+        },
+        {
+          "typeName": "local_RoleUpdateManyWithoutPermissionNestedInput",
+          "renameTo": "RoleUpdateManyWithoutPermissionNestedInput"
+        },
+        {
+          "typeName": "local_PermissionUpdateInput",
+          "renameTo": "PermissionUpdateInput"
+        },
+        {
+          "typeName": "local_PermissionCreateManyInput",
+          "renameTo": "PermissionCreateManyInput"
+        },
+        {
+          "typeName": "local_AffectedRowsOutput",
+          "renameTo": "AffectedRowsOutput"
+        },
+        {
+          "typeName": "local_PermissionUpdateManyMutationInput",
+          "renameTo": "PermissionUpdateManyMutationInput"
+        },
+        {
+          "typeName": "local_PermissionCreateWithoutRoleInput",
+          "renameTo": "PermissionCreateWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionCreateOrConnectWithoutRoleInput",
+          "renameTo": "PermissionCreateOrConnectWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionCreateNestedManyWithoutRoleInput",
+          "renameTo": "PermissionCreateNestedManyWithoutRoleInput"
+        },
+        {
+          "typeName": "local_RoleCreateInput",
+          "renameTo": "RoleCreateInput"
+        },
+        {
+          "typeName": "local_PermissionUpdateWithoutRoleInput",
+          "renameTo": "PermissionUpdateWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionUpsertWithWhereUniqueWithoutRoleInput",
+          "renameTo": "PermissionUpsertWithWhereUniqueWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionUpdateWithWhereUniqueWithoutRoleInput",
+          "renameTo": "PermissionUpdateWithWhereUniqueWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionScalarWhereInput",
+          "renameTo": "PermissionScalarWhereInput"
+        },
+        {
+          "typeName": "local_PermissionUpdateManyWithWhereWithoutRoleInput",
+          "renameTo": "PermissionUpdateManyWithWhereWithoutRoleInput"
+        },
+        {
+          "typeName": "local_PermissionUpdateManyWithoutRoleNestedInput",
+          "renameTo": "PermissionUpdateManyWithoutRoleNestedInput"
+        },
+        {
+          "typeName": "local_RoleUpdateInput",
+          "renameTo": "RoleUpdateInput"
+        },
+        {
+          "typeName": "local_RoleCreateManyInput",
+          "renameTo": "RoleCreateManyInput"
+        },
+        {
+          "typeName": "local_TCreateInput",
+          "renameTo": "TCreateInput"
+        },
+        {
+          "typeName": "local_IntFieldUpdateOperationsInput",
+          "renameTo": "IntFieldUpdateOperationsInput"
+        },
+        {
+          "typeName": "local_TUpdateInput",
+          "renameTo": "TUpdateInput"
+        },
+        {
+          "typeName": "local_TCreateManyInput",
+          "renameTo": "TCreateManyInput"
+        },
+        {
+          "typeName": "local_TUpdateManyMutationInput",
+          "renameTo": "TUpdateManyMutationInput"
+        },
+        {
+          "typeName": "local_RoleCreateWithoutUserInput",
+          "renameTo": "RoleCreateWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleCreateOrConnectWithoutUserInput",
+          "renameTo": "RoleCreateOrConnectWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleCreateNestedManyWithoutUserInput",
+          "renameTo": "RoleCreateNestedManyWithoutUserInput"
+        },
+        {
+          "typeName": "local_UserCreateInput",
+          "renameTo": "UserCreateInput"
+        },
+        {
+          "typeName": "local_RoleUpdateWithoutUserInput",
+          "renameTo": "RoleUpdateWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleUpsertWithWhereUniqueWithoutUserInput",
+          "renameTo": "RoleUpsertWithWhereUniqueWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleUpdateWithWhereUniqueWithoutUserInput",
+          "renameTo": "RoleUpdateWithWhereUniqueWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleUpdateManyWithWhereWithoutUserInput",
+          "renameTo": "RoleUpdateManyWithWhereWithoutUserInput"
+        },
+        {
+          "typeName": "local_RoleUpdateManyWithoutUserNestedInput",
+          "renameTo": "RoleUpdateManyWithoutUserNestedInput"
+        },
+        {
+          "typeName": "local_UserUpdateInput",
+          "renameTo": "UserUpdateInput"
+        },
+        {
+          "typeName": "local_UserCreateManyInput",
+          "renameTo": "UserCreateManyInput"
+        },
+        {
+          "typeName": "system_Operation_authenticationConfig_object",
+          "renameTo": "Operation_authenticationConfig_object"
+        },
+        {
+          "typeName": "system_Operation_cacheConfig_object",
+          "renameTo": "Operation_cacheConfig_object"
+        },
+        {
+          "typeName": "system_Operation_hooksConfiguration_mockResolve_object",
+          "renameTo": "Operation_hooksConfiguration_mockResolve_object"
+        },
+        {
+          "typeName": "system_Operation_hooksConfiguration_object",
+          "renameTo": "Operation_hooksConfiguration_object"
+        },
+        {
+          "typeName": "system_Operation_liveQueryConfig_object",
+          "renameTo": "Operation_liveQueryConfig_object"
+        },
+        {
+          "typeName": "system_Operation_object",
+          "renameTo": "Operation_object"
+        },
+        {
+          "typeName": "system_Role_object",
+          "renameTo": "Role_object"
+        },
+        {
+          "typeName": "system_batchInsertRoles_post_object",
+          "renameTo": "batchInsertRoles_post_object"
+        },
+        {
+          "typeName": "system_Role_input_object",
+          "renameTo": "Role_input_object"
+        },
+        {
+          "typeName": "system_bindRoleApis_post_input_object",
+          "renameTo": "bindRoleApis_post_input_object"
+        },
+        {
+          "typeName": "system_getRoleBindApis_post_input_object",
+          "renameTo": "getRoleBindApis_post_input_object"
+        },
+        {
+          "typeName": "system_bindRoleApis_post_rbacType_enum",
+          "renameTo": "bindRoleApis_post_rbacType_enum"
+        },
+        {
+          "typeName": "system_getRoleBindApis_post_rbacType_enum",
+          "renameTo": "getRoleBindApis_post_rbacType_enum"
+        }
+      ]
+    },
+    "enableGraphqlEndpoint": true,
+    "operations": null,
+    "corsConfiguration": {
+      "allowedOrigins": [
+        {
+          "kind": 0,
+          "staticVariableContent": "*"
+        }
+      ],
+      "allowedMethods": ["GET", "POST"],
+      "allowedHeaders": ["*"],
+      "exposedHeaders": ["*"],
+      "maxAge": 120,
+      "allowCredentials": true
+    },
+    "authenticationConfig": {
+      "cookieBased": {
+        "providers": null,
+        "authorizedRedirectUris": [
+          {
+            "kind": 0,
+            "staticVariableContent": "http://localhost:9123/#/workbench/userInfo"
+          },
+          {
+            "kind": 0,
+            "staticVariableContent": "http://localhost:9123/#/workbench/rapi/loginBack"
+          },
+          {
+            "kind": 0,
+            "staticVariableContent": "http://localhost:3000/#/workbench/rapi/loginBack"
+          },
+          {
+            "kind": 0,
+            "staticVariableContent": "http://localhost:3000/#/workbench/userInfo"
+          }
+        ],
+        "authorizedRedirectUriRegexes": null,
+        "hashKey": {
+          "kind": 0,
+          "staticVariableContent": "EHtsaTgYRHheCDRLgFLQkwxXGsCYWBCk"
+        },
+        "blockKey": {
+          "kind": 0,
+          "staticVariableContent": "kbLBnOfsbuukcBTVUZNPrfTkedoCAmKw"
+        },
+        "csrfSecret": {
+          "kind": 0,
+          "staticVariableContent": "kZOHvaREFNk"
+        }
+      },
+      "hooks": {
+        "postAuthentication": false,
+        "mutatingPostAuthentication": false,
+        "revalidateAuthentication": false,
+        "postLogout": false
+      },
+      "jwksBased": {
+        "providers": null
+      },
+      "publicClaims": null
+    },
+    "s3UploadConfiguration": [
+      {
+        "name": "aliyun",
+        "endpoint": {
+          "kind": 0,
+          "staticVariableContent": "cos.ap-nanjing.myqcloud.com"
+        },
+        "accessKeyID": {
+          "kind": 0,
+          "staticVariableContent": "AKID0zoR4VmsnWFsIVVIsFPM6htvlPo0yw43"
+        },
+        "secretAccessKey": {
+          "kind": 0,
+          "staticVariableContent": "sY2KROBxFOOOGxb5NSN7kDUwIo8HH5yx"
+        },
+        "bucketName": {
+          "kind": 0,
+          "staticVariableContent": "test-1314985928"
+        },
+        "bucketLocation": {
+          "kind": 0,
+          "staticVariableContent": "ap-nanjing"
+        },
+        "useSSL": true,
+        "uploadProfiles": {
+          "NewProfile2": {
+            "requireAuthentication": true,
+            "maxAllowedUploadSizeBytes": 20971520,
+            "maxAllowedFiles": 2,
+            "allowedMimeTypes": ["text/plain"],
+            "allowedFileExtensions": ["htm"],
+            "metadataJSONSchema": "{\n    \"type\": \"object\"\n}",
+            "hooks": {
+              "preUpload": false,
+              "postUpload": false
+            }
+          }
+        }
+      },
+      {
+        "name": "toc",
+        "endpoint": {
+          "kind": 0,
+          "staticVariableContent": "cos.ap-nanjing.myqcloud.com"
+        },
+        "accessKeyID": {
+          "kind": 0,
+          "staticVariableContent": "AKID0zoR4VmsnWFsIVVIsFPM6htvlPo0yw43"
+        },
+        "secretAccessKey": {
+          "kind": 0,
+          "staticVariableContent": "sY2KROBxFOOOGxb5NSN7kDUwIo8HH5yx"
+        },
+        "bucketName": {
+          "kind": 0,
+          "staticVariableContent": "test-1314985928"
+        },
+        "bucketLocation": {
+          "kind": 0,
+          "staticVariableContent": "ap-nanjing"
+        },
+        "useSSL": true,
+        "uploadProfiles": {
+          "a": {
+            "requireAuthentication": false,
+            "maxAllowedUploadSizeBytes": 10485760,
+            "maxAllowedFiles": 1,
+            "allowedMimeTypes": null,
+            "allowedFileExtensions": null,
+            "metadataJSONSchema": "",
+            "hooks": {
+              "preUpload": false,
+              "postUpload": false
+            }
+          }
+        }
+      }
+    ],
+    "allowedHostNames": [
+      {
+        "kind": 0,
+        "staticVariableContent": "*"
+      }
+    ],
+    "webhooks": [],
+    "serverOptions": {
+      "serverUrl": {
+        "kind": 1,
+        "staticVariableContent": "http://localhost:9992",
+        "environmentVariableName": "FB_SERVER_URL"
+      },
+      "listen": {
+        "host": {
+          "kind": 1,
+          "environmentVariableName": "FB_SERVER_LISTEN_HOST"
+        },
+        "port": {
+          "kind": 1,
+          "environmentVariableName": "FB_SERVER_LISTEN_PORT"
+        }
+      },
+      "logger": null
+    },
+    "nodeOptions": {
+      "nodeUrl": {
+        "kind": 1,
+        "staticVariableContent": "http://localhost:9991",
+        "environmentVariableName": "FB_API_INTERNAL_URL"
+      },
+      "publicNodeUrl": {
+        "kind": 1,
+        "staticVariableContent": "http://localhost:9991",
+        "environmentVariableName": "FB_API_PUBLIC_URL"
+      },
+      "listen": {
+        "host": {
+          "kind": 1,
+          "staticVariableContent": "127.0.0.1",
+          "environmentVariableName": "FB_API_LISTEN_HOST"
+        },
+        "port": {
+          "kind": 1,
+          "staticVariableContent": "9991",
+          "environmentVariableName": "FB_API_LISTEN_PORT"
+        }
+      },
+      "logger": {
+        "level": {
+          "kind": 1,
+          "staticVariableContent": "DEBUG",
+          "environmentVariableName": "FB_LOG_LEVEL"
+        }
+      },
+      "defaultRequestTimeoutSeconds": 0
+    },
+    "invalidOperationNames": null,
+    "proxyRequests": null
+  },
+  "apiId": "",
+  "environmentIds": null,
+  "dangerouslyEnableGraphQLEndpoint": true,
+  "deploymentName": "",
+  "apiName": ""
+}

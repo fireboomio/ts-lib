@@ -1,36 +1,38 @@
 import 'dotenv/config'
 
+import { Headers } from '@whatwg-node/fetch'
 import closeWithGrace from 'close-with-grace'
 import Fastify from 'fastify'
 import { readFile } from 'fs/promises'
 
-import { resolveConfigurationVariable } from './configuration'
+import { type FireboomConfiguration, resolveConfigurationVariable } from './configuration'
 import logger from './logger'
-import { FireboomConfiguration } from './types'
+import { FastifyRequestBody } from './types'
 
 async function readConfig() {
+  let config: FireboomConfiguration
   try {
     const configJson = await readFile('generated/fireboom.config.json')
-    const config: FireboomConfiguration = JSON.parse(configJson.toString())
-    if (!config.api?.serverOptions?.serverUrl) {
-      throw new Error('"serverUrl" is not set in fireboom.config.json')
-    }
-    const serverUrl = resolveConfigurationVariable(config.api.serverOptions.serverUrl)
-    if (!serverUrl) {
-      throw new Error('"serverUrl" is not rightly set in fireboom.config.json')
-    }
-    if (!config.api?.serverOptions.listen?.host || !config.api?.serverOptions?.listen?.port) {
-      throw new Error('"host" and "port" are not set in fireboom.config.json')
-    }
-    const host = resolveConfigurationVariable(config.api.serverOptions.listen.host)
-    const port = resolveConfigurationVariable(config.api.serverOptions.listen.port)
-    if (!host || !port) {
-      throw new Error('"host" and "port" are not rightly set in fireboom.config.json')
-    }
-    return config
+    config = JSON.parse(configJson.toString())
   } catch (error) {
-    throw new Error('Error when read fireboom.config.json')
+    throw new Error('Error when read fireboom.config.json ' + error)
   }
+  if (!config.api?.serverOptions?.serverUrl) {
+    throw new Error('"serverUrl" is not set in fireboom.config.json')
+  }
+  const serverUrl = resolveConfigurationVariable(config.api.serverOptions.serverUrl)
+  if (!serverUrl) {
+    throw new Error('"serverUrl" is not rightly set in fireboom.config.json')
+  }
+  if (!config.api?.serverOptions.listen?.host || !config.api?.serverOptions?.listen?.port) {
+    throw new Error('"host" and "port" are not set in fireboom.config.json')
+  }
+  const host = resolveConfigurationVariable(config.api.serverOptions.listen.host)
+  const port = resolveConfigurationVariable(config.api.serverOptions.listen.port)
+  if (!host || !port) {
+    throw new Error('"host" and "port" are not rightly set in fireboom.config.json')
+  }
+  return config
 }
 
 async function startFastifyServer(config: FireboomConfiguration) {
@@ -54,7 +56,7 @@ async function startFastifyServer(config: FireboomConfiguration) {
     }
   })
 
-  fastify.addHook('onRequest', (req, reply, done) => {
+  fastify.addHook('onRequest', (req, _reply, done) => {
     req.log.debug({ req }, 'received request')
     done()
   })
@@ -67,7 +69,7 @@ async function startFastifyServer(config: FireboomConfiguration) {
     done()
   })
 
-  await fastify.register(async fastify => {
+  await fastify.register(async _fastify => {
     //
   })
 
@@ -122,4 +124,13 @@ export const createClientRequest = (body: FastifyRequestBody) => {
     requestURI: raw?.requestURI || '',
     method: raw?.method || 'GET'
   }
+}
+
+/**
+ * rawClientRequest returns the raw JSON encoded client request
+ * @param body Request body
+ * @returns Client request as raw JSON, as received in the request body
+ */
+export const rawClientRequest = (body: FastifyRequestBody) => {
+  return body.__wg.clientRequest
 }
