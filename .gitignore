@@ -1,5 +1,6 @@
 # Compiled output
 dist
+esm
 node_modules
 
 # Logs
@@ -29,6 +30,3 @@ lerna-debug.log*
 
 # Lock files
 pnpm-lock.yaml
-
-# build
-tsconfig.tsbuildinfo

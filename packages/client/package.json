@@ -1,12 +1,12 @@
 {
   "name": "@fireboom/client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "esm/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc && tsc --project tsconfig.cjs.json",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

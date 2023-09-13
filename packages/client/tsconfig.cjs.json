@@ -2,10 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./esm",
+    "outDir": "./dist",
     "baseUrl": ".",
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "CommonJS",
+    "target": "ES2015",
     "composite": false,
     "declaration": true,
     "noEmit": false
