@@ -1,1 +1,1 @@
-# nodejs-sdk-lib
+# ts-lib
