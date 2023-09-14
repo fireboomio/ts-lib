@@ -275,7 +275,7 @@ export class Client {
     }
     const url = this.addUrlParams(this.operationUrl(options.operationName), params)
     const resp = await this.fetchJson(url, {
-      method: 'GET',
+      method: this.options.forceMethod || 'GET',
       signal: options.abortSignal
     })
 
@@ -318,7 +318,7 @@ export class Client {
     }
 
     const resp = await this.fetchJson(url, {
-      method: 'POST',
+      method: this.options.forceMethod || 'POST',
       signal: options.abortSignal,
       body: this.stringifyInput(options.input),
       headers
@@ -522,7 +522,7 @@ export class Client {
 
     const url = this.addUrlParams(this.operationUrl(subscription.operationName), params)
     return await this.fetchJson(url, {
-      method: 'GET',
+      method: this.options.forceMethod || 'GET',
       signal: subscription.abortSignal
     })
   }

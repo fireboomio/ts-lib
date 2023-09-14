@@ -164,4 +164,9 @@ export type ClientConfig = {
    * supported headers.
    */
   forceSSE?: boolean
+  /**
+   * Force method for internal operation to use POST method
+   * but not GET/POST
+   */
+  forceMethod?: string
 }
