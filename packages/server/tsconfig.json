@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "strict": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "composite": false,
+    "declaration": true,
+    "noEmit": false
+  },
+  "include": ["./src"]
+}
