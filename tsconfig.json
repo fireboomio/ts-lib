@@ -19,6 +19,6 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true
   },
-  "references": [{ "path": "./packages/client/" }],
-  "exclude": ["node_modules", "**/*/dist", "**/*/lib", "**/*/libs"]
+  "references": [{ "path": "./packages/client/" }, { "path": "./packages/server/" }],
+  "exclude": ["node_modules", "dist"]
 }

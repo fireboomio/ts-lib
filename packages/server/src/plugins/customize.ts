@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyPluginAsync } from 'fastify'
 import type { GraphQLSchema } from 'graphql'
-import { printIntrospectionSchema } from 'graphql'
+import { introspectionFromSchema } from 'graphql'
 import {
   type ExecutionContext as HelixExecutionContext,
   getGraphQLParameters,
@@ -114,7 +114,11 @@ export async function registerCustomizeGraphQL(name: string, config: GraphQLServ
       }
     }
   })
-  saveOperationConfig(HookParent.Customize, name, printIntrospectionSchema(schema))
+  saveOperationConfig(
+    HookParent.Customize,
+    name,
+    JSON.stringify(introspectionFromSchema(schema).__schema)
+  )
   customizeNameList.push(name)
 }
 
