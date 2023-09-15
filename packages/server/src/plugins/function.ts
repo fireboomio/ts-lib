@@ -1,20 +1,15 @@
 import { Readable } from 'node:stream'
 
-import { FastifyInstance, FastifyPluginAsync } from 'fastify'
-import { z, ZodRawShape } from 'zod'
+import type { FastifyInstance, FastifyPluginAsync } from 'fastify'
+import type { ZodRawShape } from 'zod'
+import { z } from 'zod'
 import { zodToJsonSchema } from 'zod-to-json-schema'
-import { JsonSchema7Type } from 'zod-to-json-schema/src/parseDef'
-import { JsonSchema7ObjectType } from 'zod-to-json-schema/src/parsers/object'
+import type { JsonSchema7Type } from 'zod-to-json-schema/src/parseDef'
+import type { JsonSchema7ObjectType } from 'zod-to-json-schema/src/parsers/object'
 
 import { saveOperationConfig } from '../operation.json'
-import {
-  BaseReuqestContext,
-  Endpoint,
-  HookParent,
-  OperationExecutionEngine,
-  OperationType,
-  Request
-} from '../types'
+import type { BaseReuqestContext, Request } from '../types'
+import { Endpoint, HookParent, OperationExecutionEngine, OperationType } from '../types'
 import { replaceUrl } from '../utils'
 
 export type FunctionConfig<T extends ZodRawShape = any> = {

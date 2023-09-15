@@ -1,13 +1,8 @@
-import { FastifyInstance, FastifyPluginAsync, FastifyReply } from 'fastify'
+import type { FastifyInstance, FastifyPluginAsync, FastifyReply } from 'fastify'
 
 import { saveOperationConfig } from '../operation.json'
-import {
-  BaseReuqestContext,
-  Endpoint,
-  HookParent,
-  OperationExecutionEngine,
-  Request
-} from '../types'
+import type { BaseReuqestContext, Request } from '../types'
+import { Endpoint, HookParent, OperationExecutionEngine } from '../types'
 import { replaceUrl } from '../utils'
 
 export interface ProxyConfig {

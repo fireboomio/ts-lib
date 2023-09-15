@@ -1,6 +1,7 @@
-import { FastifyPluginAsync } from 'fastify'
+import type { FastifyPluginAsync } from 'fastify'
 
-import { Endpoint, Health } from '../types'
+import type { Health } from '../types'
+import { Endpoint } from '../types'
 import { getCustomizeNameList } from './customize'
 import { getFunctionNameList } from './function'
 import { getproxyNameList } from './proxy'

@@ -6,16 +6,15 @@ import {
   type SubscriptionRequestOptions
 } from '@fireboom/client'
 
-import { Endpoint, WunderGraphRequest } from './types'
+import type { WunderGraphRequest } from './types'
+import { Endpoint } from './types'
 
 export type InternalOperation<Data = any> = {
   input?: object
   response: ClientResponse<Data>
 }
 
-export type InternalOperationDefinition = {
-  [key: string]: InternalOperation
-}
+export type InternalOperationDefinition = Record<string, InternalOperation>
 
 export type InternalOperationsDefinition<
   Queries extends InternalOperationDefinition = InternalOperationDefinition,

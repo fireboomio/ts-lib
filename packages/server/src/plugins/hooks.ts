@@ -1,9 +1,7 @@
-import { FastifyInstance, FastifyPluginAsync, FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyInstance, FastifyPluginAsync, FastifyReply, FastifyRequest } from 'fastify'
 
-import {
+import type {
   BaseRequestBody,
-  Endpoint,
-  MiddlewareHook,
   MiddlewareHookResponse,
   OnRequestHookPayload,
   OnRequestHookResponse,
@@ -12,10 +10,10 @@ import {
   OperationHookPayload,
   OperationHookPayload_response,
   RequestHeaders,
-  UploadHook,
   UploadHookPayload,
   UploadHookResponse
 } from '../types'
+import { Endpoint, MiddlewareHook, UploadHook } from '../types'
 
 export interface GlobalHooksRouteConfig {
   kind: 'global-hook'

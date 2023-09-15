@@ -1,8 +1,15 @@
-import { IncomingHttpHeaders } from 'http'
-import { Logger } from 'pino'
+import type { IncomingHttpHeaders } from 'http'
+import type { Logger } from 'pino'
 
-import { InternalOperationsDefinition, OperationsClient } from '../operations.client'
+import type { InternalOperationsDefinition, OperationsClient } from '../operations.client'
 import type { User, WunderGraphRequest } from './server'
+export type {
+  InternalOperation,
+  InternalOperationDefinition,
+  InternalOperationsDefinition,
+  OperationsClient,
+  OperationsClientConfig
+} from '../operations.client'
 
 declare module 'fastify' {
   export interface FastifyRequest {

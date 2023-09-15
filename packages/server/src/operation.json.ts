@@ -1,7 +1,7 @@
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 
-import { HookParent, Operation } from './types'
+import type { HookParent, Operation } from './types'
 
 export async function saveOperationConfig(
   folder: HookParent,

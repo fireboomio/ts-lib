@@ -1,5 +1,6 @@
-import { FastifyInstance, FastifyPluginAsync } from 'fastify'
-import { GraphQLSchema, printIntrospectionSchema } from 'graphql'
+import type { FastifyInstance, FastifyPluginAsync } from 'fastify'
+import type { GraphQLSchema } from 'graphql'
+import { printIntrospectionSchema } from 'graphql'
 import {
   type ExecutionContext as HelixExecutionContext,
   getGraphQLParameters,
@@ -10,7 +11,8 @@ import {
 } from 'graphql-helix'
 
 import { saveOperationConfig } from '../operation.json'
-import { BaseReuqestContext, Endpoint, HookParent } from '../types'
+import type { BaseReuqestContext } from '../types'
+import { Endpoint, HookParent } from '../types'
 import { replaceUrl } from '../utils'
 
 export interface FireboomExecutionContext {

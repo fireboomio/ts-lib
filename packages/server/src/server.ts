@@ -12,9 +12,10 @@ import { OperationsClient } from './operations.client'
 import { FireboomCustomizesPlugin } from './plugins/customize'
 import { FireboomFunctionsPlugin } from './plugins/function'
 import { FireboomHealthPlugin } from './plugins/health'
-import { FBFastifyRequest, FireboomHooksPlugin, HooksRouteConfig } from './plugins/hooks'
+import type { FBFastifyRequest, HooksRouteConfig } from './plugins/hooks'
+import { FireboomHooksPlugin } from './plugins/hooks'
 import { FireboomProxiesPlugin } from './plugins/proxy'
-import { BaseRequestBody, HookServerConfiguration } from './types'
+import type { BaseRequestBody, HookServerConfiguration } from './types'
 
 export async function startServer(config: HookServerConfiguration) {
   logger.level = config.logLevel || 'info'
