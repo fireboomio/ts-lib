@@ -7,9 +7,14 @@
   "files": ["dist", "esm"],
   "scripts": {
     "build": "rm -rf dist esm && tsc && tsc --project tsconfig.cjs.json",
+    "build:umd": "rollup -c && node scripts/umd.cjs",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.3",
+    "@types/node": "16",
+    "rollup": "^3.29.2",
     "type-fest": "^4.3.1"
   }
 }

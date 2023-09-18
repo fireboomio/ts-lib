@@ -1,12 +1,7 @@
 // import { applyPatch } from 'fast-json-patch'
-import {
-  AuthorizationError,
-  ClientOperationErrorCodes,
-  InputValidationError,
-  NoUserError,
-  ResponseError
-} from './error'
-import {
+import type { ClientOperationErrorCodes } from './error'
+import { AuthorizationError, InputValidationError, NoUserError, ResponseError } from './error'
+import type {
   ClientConfig,
   ClientResponse,
   FetchUserRequestOptions,
@@ -22,7 +17,7 @@ import {
   UploadResponse,
   ValidationResponseJSON
 } from './types'
-import { S3UploadProfile, User } from './types.server'
+import type { S3UploadProfile, User } from './types.server'
 import { deepClone } from './utils/helper'
 
 /**

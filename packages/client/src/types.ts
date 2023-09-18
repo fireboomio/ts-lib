@@ -1,12 +1,14 @@
 import type { RequiredKeysOf, SetRequired } from 'type-fest'
 
-import { GraphQLError, ValidationError } from './error'
+import type { GraphQLError, ValidationError } from './error'
 
 export type Headers = Record<string, any>
 
+// @ts-ignore
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>
 
-export type JSONObject = { [key: string]: JSONValue }
+// @ts-ignore
+export type JSONObject = Record<string, JSONValue>
 
 export type ClientResponse<Data = any, Error = any> = {
   data?: Data
@@ -65,11 +67,12 @@ export type UploadRequestOptions<
       meta?: Meta
     }
 
-export type OperationMetadata = {
-  [key: string]: {
+export type OperationMetadata = Record<
+  string,
+  {
     requiresAuthentication: boolean
   }
-}
+>
 
 export type FetchUserRequestOptions = {
   abortSignal?: AbortSignal

@@ -1,6 +1,7 @@
 # Compiled output
 dist
 esm
+umd
 node_modules
 
 # Logs
