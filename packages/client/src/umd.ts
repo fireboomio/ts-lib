@@ -2,23 +2,27 @@ import { Client } from './client'
 import type {
   ClientConfig,
   ClientResponse,
-  FetchUserRequestOptions,
-  Headers,
-  LogoutOptions,
+  // FetchUserRequestOptions,
+  // Headers,
+  // LogoutOptions,
   MutationRequestOptions,
   QueryRequestOptions,
   SubscriptionEventHandler,
-  SubscriptionRequestOptions,
-  UploadRequestOptions
+  SubscriptionRequestOptions
+  // UploadRequestOptions
 } from './types'
-import type { S3UploadProfile } from './types.server'
+// import type { S3UploadProfile } from './types.server'
 
 let client: Client
 
+function init(options: Omit<ClientConfig, 'forceMethod'>) {
+  client = new Client(options)
+}
+
+init({ baseURL: 'http://localhost:9991' })
+
 export default {
-  init(options: Omit<ClientConfig, 'forceMethod'>) {
-    client = new Client(options)
-  },
+  init,
   query: ['queries'].reduce<
     Record<
       string,
@@ -75,18 +79,22 @@ export default {
     obj[q] = func
     return obj
   }, {}),
-  fetchUser: (options?: FetchUserRequestOptions) => client.fetchUser(options),
-  hasExtraHeaders: () => client.hasExtraHeaders(),
-  isAuthenticatedOperation: (operationName: string) =>
-    client.isAuthenticatedOperation(operationName),
-  login: (authProviderID: string, redirectURI?: string) =>
-    client.login(authProviderID, redirectURI),
-  logout: (options?: LogoutOptions) => client.logout(options),
-  setAuthorizationToken: (token: string) => client.setAuthorizationToken(token),
-  setExtraHeaders: (headers: Headers) => client.setExtraHeaders(headers),
-  unsetAuthorization: () => client.unsetAuthorization(),
-  uploadFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
-    client.uploadFiles(config, validation),
-  validateFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
-    client.validateFiles(config, validation)
+  ...(() => {
+    const { query, mutate, subscribe, ...rest } = client!
+    return rest
+  })()
+  // fetchUser: (options?: FetchUserRequestOptions) => client.fetchUser(options),
+  // hasExtraHeaders: () => client.hasExtraHeaders(),
+  // isAuthenticatedOperation: (operationName: string) =>
+  //   client.isAuthenticatedOperation(operationName),
+  // login: (authProviderID: string, redirectURI?: string) =>
+  //   client.login(authProviderID, redirectURI),
+  // logout: (options?: LogoutOptions) => client.logout(options),
+  // setAuthorizationToken: (token: string) => client.setAuthorizationToken(token),
+  // setExtraHeaders: (headers: Headers) => client.setExtraHeaders(headers),
+  // unsetAuthorization: () => client.unsetAuthorization(),
+  // uploadFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
+  //   client.uploadFiles(config, validation),
+  // validateFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
+  //   client.validateFiles(config, validation)
 }
