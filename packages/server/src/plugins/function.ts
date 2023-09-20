@@ -38,52 +38,45 @@ export async function registerFunctionHandler(path: string, config: FunctionConf
   const responseSchema =
     config.response instanceof z.Schema ? zodToJsonSchema(config.response) : config.input
 
-  fastify.post(
-    routeUrl,
-    {
-      config: { kind: 'function', functionPath: path },
-      schema: { body: inputSchema }
-    },
-    async (req, reply) => {
-      const request = {
-        body: req.body,
-        headers: req.headers,
-        method: req.method,
-        query: req.query
-      }
-      reply.type('application/json')
-      if (operationType === OperationType.QUERY || operationType === OperationType.MUTATION) {
-        try {
-          const data = await config.handler(request, req.ctx)
-          reply.code(200).send({ response: { data } })
-        } catch (error) {
-          reply.code(500).send({ response: { error } })
-        }
-      } else {
-        const subscribeOnce = req.headers['x-wg-subscribe-once'] === 'true'
-
-        const readableStream = new Readable()
-        readableStream._read = () => {}
-        reply.send(readableStream)
-        try {
-          const gen = config.handler(request, req.ctx) as AsyncGenerator<object>
-
-          for await (const next of gen) {
-            readableStream.push(`${JSON.stringify({ data: next })}\n\n`)
-            if (subscribeOnce) {
-              readableStream.push(null)
-              break
-            }
-          }
-        } catch (error) {
-          readableStream.push(`${JSON.stringify({ error })}`)
-        }
-        readableStream.destroy()
-
-        return reply
-      }
+  fastify.post(routeUrl, { schema: { body: inputSchema } }, async (req, reply) => {
+    const request = {
+      body: req.body,
+      headers: req.headers,
+      method: req.method,
+      query: req.query
     }
-  )
+    reply.type('application/json')
+    if (operationType === OperationType.QUERY || operationType === OperationType.MUTATION) {
+      try {
+        const data = await config.handler(request, req.ctx)
+        reply.code(200).send({ response: { data } })
+      } catch (error) {
+        reply.code(500).send({ response: { error } })
+      }
+    } else {
+      const subscribeOnce = req.headers['x-wg-subscribe-once'] === 'true'
+
+      const readableStream = new Readable()
+      readableStream._read = () => {}
+      reply.send(readableStream)
+      try {
+        const gen = config.handler(request, req.ctx) as AsyncGenerator<object>
+
+        for await (const next of gen) {
+          readableStream.push(`${JSON.stringify({ data: next })}\n\n`)
+          if (subscribeOnce) {
+            readableStream.push(null)
+            break
+          }
+        }
+      } catch (error) {
+        readableStream.push(`${JSON.stringify({ error })}`)
+      }
+      readableStream.destroy()
+
+      return reply
+    }
+  })
 
   saveOperationConfig(HookParent.Function, path, {
     engine: OperationExecutionEngine.ENGINE_PROXY,

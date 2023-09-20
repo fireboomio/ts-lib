@@ -45,7 +45,6 @@ export async function registerCustomizeGraphQL(name: string, config: GraphQLServ
   fastify.route({
     method: ['GET', 'POST'],
     url: routeUrl,
-    config: { kind: 'customize', customizeName: name },
     async handler(req, reply) {
       const request = {
         body: req.body,

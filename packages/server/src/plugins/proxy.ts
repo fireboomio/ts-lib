@@ -18,7 +18,6 @@ export async function registerProxyHandler(path: string, config: ProxyConfig) {
   fastify.route({
     method: ['GET', 'POST'],
     url: routeUrl,
-    config: { kind: 'proxy', proxyPath: path },
     async handler(req, reply) {
       const request = {
         body: req.body,

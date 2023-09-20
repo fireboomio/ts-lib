@@ -12,7 +12,7 @@ import { OperationsClient } from './operations.client'
 import { FireboomCustomizesPlugin } from './plugins/customize'
 import { FireboomFunctionsPlugin } from './plugins/function'
 import { FireboomHealthPlugin } from './plugins/health'
-import type { FBFastifyRequest, HooksRouteConfig } from './plugins/hooks'
+import type { FBFastifyRequest } from './plugins/hooks'
 import { FireboomHooksPlugin } from './plugins/hooks'
 import { FireboomProxiesPlugin } from './plugins/proxy'
 import type { BaseRequestBody, HookServerConfiguration } from './types'
@@ -51,16 +51,7 @@ export async function startServer(config: HookServerConfiguration) {
   fastify.register(FireboomHealthPlugin)
 
   fastify.addHook('onRoute', routeOptions => {
-    const routeConfig = routeOptions.config as HooksRouteConfig | undefined
-    if (routeConfig?.kind === 'hook') {
-      if (routeConfig.operationName) {
-        fastify.log.debug(
-          `Registered Operation Hook '${routeConfig.operationName}' with (${routeOptions.method}) '${routeOptions.url}'`
-        )
-      } else {
-        fastify.log.debug(`Registered Global Hook (${routeOptions.method}) '${routeOptions.url}'`)
-      }
-    }
+    fastify.log.info(`Registered router [${routeOptions.method}] with '${routeOptions.url}'`)
   })
 
   await fastify.register(async fastify => {
