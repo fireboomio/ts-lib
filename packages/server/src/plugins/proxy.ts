@@ -1,12 +1,16 @@
 import type { FastifyInstance, FastifyPluginAsync, FastifyReply } from 'fastify'
 
 import { saveOperationConfig } from '../operation.json'
-import type { BaseReuqestContext, Request } from '../types'
+import type { BaseReuqestContext, OnRequestHookPayload } from '../types'
 import { Endpoint, HookParent, OperationExecutionEngine } from '../types'
 import { replaceUrl } from '../utils'
 
 export interface ProxyConfig {
-  handler: (req: Request, ctx: BaseReuqestContext, reply: FastifyReply) => Promise<void>
+  handler: (
+    input: Record<string, any>,
+    ctx: BaseReuqestContext,
+    reply: FastifyReply
+  ) => Promise<void>
 }
 
 let fastify: FastifyInstance
@@ -15,18 +19,26 @@ let proxyNameList: string[]
 
 export async function registerProxyHandler(path: string, config: ProxyConfig) {
   const routeUrl = replaceUrl(Endpoint.Proxy, { path })
-  fastify.route({
+  fastify.route<{ Body: OnRequestHookPayload }>({
     method: ['GET', 'POST'],
     url: routeUrl,
     async handler(req, reply) {
-      const request = {
-        body: req.body,
-        headers: req.headers,
-        method: req.method,
-        query: req.query
+      // const request = {
+      //   body: req.body,
+      //   headers: req.headers,
+      //   method: req.method,
+      //   query: req.query
+      // }
+      let input = {}
+      if (req.body.request.originBody) {
+        try {
+          input = JSON.parse(Buffer.from(req.body.request.originBody, 'base64').toString())
+        } catch (error) {
+          //
+        }
       }
       try {
-        await config.handler(request, req.ctx, reply)
+        await config.handler(input, req.ctx, reply)
       } catch (error) {
         reply.code(500).send(error)
       }

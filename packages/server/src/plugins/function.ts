@@ -8,7 +8,7 @@ import type { JsonSchema7Type } from 'zod-to-json-schema/src/parseDef'
 import type { JsonSchema7ObjectType } from 'zod-to-json-schema/src/parsers/object'
 
 import { saveOperationConfig } from '../operation.json'
-import type { BaseReuqestContext, Request } from '../types'
+import type { BaseReuqestContext } from '../types'
 import { Endpoint, HookParent, OperationExecutionEngine, OperationType } from '../types'
 import { replaceUrl } from '../utils'
 
@@ -18,11 +18,11 @@ export type FunctionConfig<T extends ZodRawShape = any> = {
 } & (
   | {
       operationType?: OperationType.QUERY | OperationType.MUTATION
-      handler: (req: Request, ctx: BaseReuqestContext) => Promise<any>
+      handler: (input: Record<string, any>, ctx: BaseReuqestContext) => Promise<any>
     }
   | {
       operationType: OperationType.SUBSCRIPTION
-      handler: (req: Request, ctx: BaseReuqestContext) => AsyncGenerator<any>
+      handler: (input: Record<string, any>, ctx: BaseReuqestContext) => AsyncGenerator<any>
     }
 )
 
@@ -36,19 +36,13 @@ export async function registerFunctionHandler(path: string, config: FunctionConf
   const inputSchema =
     config.input instanceof z.ZodObject ? zodToJsonSchema(config.input) : config.input
   const responseSchema =
-    config.response instanceof z.Schema ? zodToJsonSchema(config.response) : config.input
+    config.response instanceof z.Schema ? zodToJsonSchema(config.response) : config.response
 
-  fastify.post(routeUrl, { schema: { body: inputSchema } }, async (req, reply) => {
-    const request = {
-      body: req.body,
-      headers: req.headers,
-      method: req.method,
-      query: req.query
-    }
+  fastify.post<{ Body: { input: Record<string, any> } }>(routeUrl, async (req, reply) => {
     reply.type('application/json')
     if (operationType === OperationType.QUERY || operationType === OperationType.MUTATION) {
       try {
-        const data = await config.handler(request, req.ctx)
+        const data = await config.handler(req.body.input, req.ctx)
         reply.code(200).send({ response: { data } })
       } catch (error) {
         reply.code(500).send({ response: { error } })
@@ -60,7 +54,7 @@ export async function registerFunctionHandler(path: string, config: FunctionConf
       readableStream._read = () => {}
       reply.send(readableStream)
       try {
-        const gen = config.handler(request, req.ctx) as AsyncGenerator<object>
+        const gen = config.handler(req.body.input, req.ctx) as AsyncGenerator<object>
 
         for await (const next of gen) {
           readableStream.push(`${JSON.stringify({ data: next })}\n\n`)
