@@ -80,6 +80,7 @@ export async function registerFunctionHandler(path: string, config: FunctionConf
 
   saveOperationConfig(HookParent.Function, path, {
     engine: OperationExecutionEngine.ENGINE_PROXY,
+    operationType: config.operationType,
     variablesSchema: JSON.stringify(inputSchema),
     responseSchema: JSON.stringify(responseSchema)
   })

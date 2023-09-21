@@ -7,6 +7,8 @@ import type {
   OnRequestHookResponse,
   OnResponseHookPayload,
   OnResponseHookResponse,
+  OnWsConnectionInitHookPayload,
+  OnWsConnectionInitHookResponse,
   OperationHookPayload,
   OperationHookPayload_response,
   RequestHeaders,
@@ -55,6 +57,9 @@ export type WithResponseHookFunction<R = CommonResponse> = (
 export type GlobalHookFunction<Payload, R = CommonResponse> = (
   ctx: FastifyRequest['ctx'] & Payload
 ) => Promise<R | SKIP | CANCEL>
+export type OnConnectionInitHookFunction<Payload, R = CommonResponse> = (
+  ctx: FastifyRequest['ctx'] & Payload
+) => Promise<R>
 export type OperationHookFunction<I = OperationHookPayload['input'], R = CommonResponse> = (
   ctx: FastifyRequest['ctx'] & { input: I }
 ) => Promise<R>
@@ -255,6 +260,28 @@ export function registerOnOriginResponse(
       return { hook: MiddlewareHook.OnOriginResponse, error: err }
     }
   })
+}
+
+export function registerOnConnectionInit(
+  fn: OnConnectionInitHookFunction<OnWsConnectionInitHookPayload, OnWsConnectionInitHookResponse>
+) {
+  fastify.post<FBFastifyRequest<OnWsConnectionInitHookPayload, OnWsConnectionInitHookResponse>>(
+    Endpoint.OnConnectionInit,
+    async (request, reply) => {
+      reply.type('application/json').code(200)
+      try {
+        const out = await fn({ ...request.ctx, ...request.body })
+        return {
+          hook: MiddlewareHook.OnConnectionInit,
+          response: out
+        }
+      } catch (err) {
+        request.log.error(err)
+        reply.code(500)
+        return { hook: MiddlewareHook.OnOriginResponse, error: err }
+      }
+    }
+  )
 }
 
 export function registerMockResolve<

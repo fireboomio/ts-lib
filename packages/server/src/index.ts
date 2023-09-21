@@ -9,6 +9,7 @@ export {
   registerMutatingPostAuthentication,
   registerMutatingPostResolve,
   registerMutatingPreResolve,
+  registerOnConnectionInit,
   registerOnOriginRequest,
   registerOnOriginResponse,
   registerPostAuthentication,

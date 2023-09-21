@@ -27,7 +27,7 @@ export async function saveOperationConfig(
   if (typeof config === 'string') {
     await writeFile(jsonPath, config)
   } else {
-    json = { ...json, ...config }
+    json = { path, ...json, ...config }
     await writeFile(jsonPath, JSON.stringify(json, null, 2))
   }
 }
