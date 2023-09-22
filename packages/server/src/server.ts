@@ -33,12 +33,12 @@ export async function startServer(config: HookServerConfiguration) {
   fastify.log.level = 'silent'
 
   fastify.addHook('onRequest', (req, _reply, done) => {
-    req.log.debug({ req }, 'received request')
+    logger.debug({ req }, 'received request')
     done()
   })
 
   fastify.addHook('onResponse', (req, reply, done) => {
-    req.log.debug(
+    logger.debug(
       { res: reply, url: req.raw.url, responseTime: reply.getResponseTime() },
       'request completed'
     )
@@ -51,7 +51,7 @@ export async function startServer(config: HookServerConfiguration) {
   fastify.register(FireboomHealthPlugin)
 
   fastify.addHook('onRoute', routeOptions => {
-    fastify.log.info(`Registered router [${routeOptions.method}] with '${routeOptions.url}'`)
+    logger.info(`Registered router [${routeOptions.method}] with '${routeOptions.url}'`)
   })
 
   await fastify.register(async fastify => {
