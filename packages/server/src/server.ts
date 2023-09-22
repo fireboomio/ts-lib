@@ -1,9 +1,8 @@
-import 'dotenv/config'
-
 import { resolve } from 'node:path'
 
 import fetch from '@web-std/fetch'
 import closeWithGrace from 'close-with-grace'
+import { config as configEnv } from 'dotenv'
 import { glob } from 'fast-glob'
 import Fastify from 'fastify'
 
@@ -19,6 +18,7 @@ import type { BaseRequestBody, HookServerConfiguration } from './types'
 
 export async function startServer(config: HookServerConfiguration) {
   logger.level = config.logLevel || 'info'
+  configEnv({ path: resolve(process.cwd(), config.envFilePath) })
   let id = 0
   const fastify = Fastify({
     logger,
