@@ -42,6 +42,10 @@ export class Client {
     this.csrfEnabled = options.csrfEnabled ?? true
   }
 
+  public setBaseURL(url: string) {
+    this.options.baseURL = url
+  }
+
   public isAuthenticatedOperation(operationName: string) {
     return !!this.options.operationMetadata?.[operationName]?.requiresAuthentication
   }
@@ -97,6 +101,7 @@ export class Client {
 
     if (!init.signal && this.options.requestTimeoutMs && this.options.requestTimeoutMs > 0) {
       const controller = new AbortController()
+      // @ts-ignore
       timeout = setTimeout(() => controller.abort(), this.options.requestTimeoutMs)
       init.signal = controller.signal
     }
@@ -449,8 +454,9 @@ export class Client {
   ) {
     return new Promise<void>((resolve, reject) => {
       const params = this.searchParams({
-        wg_sse: '',
-        wg_json_patch: ''
+        wg_sse: ''
+        // TODO not support currently
+        // wg_json_patch: ''
       })
       const variables = this.stringifyInput(subscription.input)
       if (variables) {
