@@ -2,6 +2,8 @@ import type { FastifyInstance, FastifyPluginAsync, FastifyReply, FastifyRequest 
 
 import type {
   BaseRequestBody,
+  BaseRequestContext,
+  InternalOperationsDefinition,
   MiddlewareHookResponse,
   OnRequestHookPayload,
   OnRequestHookResponse,
@@ -49,35 +51,54 @@ export type MutatingPreResolveFunction<T extends PromiseFunction> = (
   }
 >
 
-export type VoidHookFunction = (ctx: FastifyRequest['ctx']) => Promise<void>
+export type VoidHookFunction<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = (ctx: BaseRequestContext<T>) => Promise<void>
 export type CommonResponse = MiddlewareHookResponse['response']
-export type WithResponseHookFunction<R = CommonResponse> = (
-  ctx: FastifyRequest['ctx']
-) => Promise<R>
-export type GlobalHookFunction<Payload, R = CommonResponse> = (
-  ctx: FastifyRequest['ctx'] & Payload
-) => Promise<R | SKIP | CANCEL>
-export type OnConnectionInitHookFunction<Payload, R = CommonResponse> = (
-  ctx: FastifyRequest['ctx'] & Payload
-) => Promise<R>
-export type OperationHookFunction<I = OperationHookPayload['input'], R = CommonResponse> = (
-  ctx: FastifyRequest['ctx'] & { input: I }
-) => Promise<R>
-export type OperationWithoutResponseHookFunction<I = OperationHookPayload['input']> = (
-  ctx: FastifyRequest['ctx'] & { input: I }
-) => Promise<void>
+export type WithResponseHookFunction<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition,
+  R = CommonResponse
+> = (ctx: BaseRequestContext<T>) => Promise<R>
+export type GlobalHookFunction<
+  Payload,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition,
+  R = CommonResponse
+> = (ctx: BaseRequestContext<T> & Payload) => Promise<R | SKIP | CANCEL>
+export type OnConnectionInitHookFunction<
+  Payload,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition,
+  R = CommonResponse
+> = (ctx: BaseRequestContext<T> & Payload) => Promise<R>
+export type OperationHookFunction<
+  I = OperationHookPayload['input'],
+  R = CommonResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = (ctx: BaseRequestContext<T> & { input: I }) => Promise<R>
+export type OperationWithoutResponseHookFunction<
+  I = OperationHookPayload['input'],
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = (ctx: BaseRequestContext<T> & { input: I }) => Promise<void>
 export type OperationWithResponseHookFunction<
   I = OperationHookPayload['input'],
-  R = CommonResponse
+  R = CommonResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
 > = (
-  ctx: FastifyRequest['ctx'] & { input: I; response: OperationHookPayload_response }
+  ctx: BaseRequestContext<T> & { input: I; response: OperationHookPayload_response }
 ) => Promise<R>
 
-export type PreUploadHookFunction<Meta = any, R = CommonResponse> = (
-  ctx: FastifyRequest['ctx'] & Omit<UploadHookPayload, '__wg' | 'error' | 'meta'> & { meta: Meta }
+export type PreUploadHookFunction<
+  Meta = any,
+  R = CommonResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = (
+  ctx: BaseRequestContext<T> & Omit<UploadHookPayload, '__wg' | 'error' | 'meta'> & { meta: Meta }
 ) => Promise<R>
-export type PostUploadHookFunction<Meta = any, R = CommonResponse> = (
-  ctx: FastifyRequest['ctx'] & Omit<UploadHookPayload, '__wg' | 'meta'> & { meta: Meta }
+export type PostUploadHookFunction<
+  Meta = any,
+  R = CommonResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = (
+  ctx: BaseRequestContext<T> & Omit<UploadHookPayload, '__wg' | 'meta'> & { meta: Meta }
 ) => Promise<R>
 
 export type FBHookResponse<R = CommonResponse> =
@@ -98,7 +119,9 @@ function authenticationPreHandler(req: FastifyRequest, reply: FastifyReply): boo
   return true
 }
 
-export function registerPostAuthentication(fn: VoidHookFunction) {
+export function registerPostAuthentication<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: VoidHookFunction<T>) {
   fastify.post<FBFastifyRequest<BaseRequestBody>>(
     Endpoint.PostAuthentication,
     async (request, reply) => {
@@ -117,9 +140,9 @@ export function registerPostAuthentication(fn: VoidHookFunction) {
   )
 }
 
-export function registerMutatingPostAuthentication(
-  fn: HeaderMutableFunction<WithResponseHookFunction>
-) {
+export function registerMutatingPostAuthentication<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: HeaderMutableFunction<WithResponseHookFunction<T>>) {
   fastify.post<FBFastifyRequest<BaseRequestBody>>(
     Endpoint.MutatingPostAuthentication,
     async (request, reply) => {
@@ -140,7 +163,9 @@ export function registerMutatingPostAuthentication(
   )
 }
 
-export function registerRevalidate(fn: HeaderMutableFunction<WithResponseHookFunction>) {
+export function registerRevalidate<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: HeaderMutableFunction<WithResponseHookFunction<T>>) {
   fastify.post<FBFastifyRequest<BaseRequestBody>>(
     Endpoint.RevalidateAuthentication,
     async (request, reply) => {
@@ -161,7 +186,9 @@ export function registerRevalidate(fn: HeaderMutableFunction<WithResponseHookFun
   )
 }
 
-export function registerPostLogout(fn: HeaderMutableFunction<WithResponseHookFunction>) {
+export function registerPostLogout<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: HeaderMutableFunction<WithResponseHookFunction<T>>) {
   fastify.post<FBFastifyRequest<BaseRequestBody>>(Endpoint.PostLogout, async (request, reply) => {
     if (authenticationPreHandler(request, reply)) {
       try {
@@ -179,9 +206,9 @@ export function registerPostLogout(fn: HeaderMutableFunction<WithResponseHookFun
   })
 }
 
-export function registerBeforeOriginRequest(
-  fn: GlobalHookFunction<OnRequestHookPayload, OnRequestHookResponse['request']>
-) {
+export function registerBeforeOriginRequest<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: GlobalHookFunction<OnRequestHookPayload, T, OnRequestHookResponse['request']>) {
   fastify.post<FBFastifyRequest<OnRequestHookPayload>>(
     Endpoint.BeforeOriginRequest,
     async (request, reply) => {
@@ -207,9 +234,9 @@ export function registerBeforeOriginRequest(
   )
 }
 
-export function registerOnOriginRequest(
-  fn: GlobalHookFunction<OnRequestHookPayload, OnRequestHookResponse['request']>
-) {
+export function registerOnOriginRequest<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: GlobalHookFunction<OnRequestHookPayload, T, OnRequestHookResponse['request']>) {
   fastify.post<FBFastifyRequest<OnRequestHookPayload>>(
     Endpoint.OnOriginRequest,
     async (request, reply) => {
@@ -235,9 +262,9 @@ export function registerOnOriginRequest(
   )
 }
 
-export function registerOnOriginResponse(
-  fn: GlobalHookFunction<OnResponseHookPayload, OnResponseHookResponse['response']>
-) {
+export function registerOnOriginResponse<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: GlobalHookFunction<OnResponseHookPayload, T, OnResponseHookResponse['response']>) {
   fastify.post<
     FBFastifyRequest<OnResponseHookPayload, PartialKey<OnResponseHookResponse, 'response'>>
   >(Endpoint.OnOriginResponse, async (request, reply) => {
@@ -262,8 +289,10 @@ export function registerOnOriginResponse(
   })
 }
 
-export function registerOnConnectionInit(
-  fn: OnConnectionInitHookFunction<OnWsConnectionInitHookPayload, OnWsConnectionInitHookResponse>
+export function registerOnConnectionInit<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(
+  fn: OnConnectionInitHookFunction<OnWsConnectionInitHookPayload, T, OnWsConnectionInitHookResponse>
 ) {
   fastify.post<FBFastifyRequest<OnWsConnectionInitHookPayload, OnWsConnectionInitHookResponse>>(
     Endpoint.OnConnectionInit,
@@ -286,10 +315,11 @@ export function registerOnConnectionInit(
 
 export function registerMockResolve<
   OperationInput extends OperationHookPayload['input'],
-  OperationResponse
+  OperationResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
 >(
   operationName: string,
-  fn: HeaderMutableFunction<OperationHookFunction<OperationInput, OperationResponse>>
+  fn: HeaderMutableFunction<OperationHookFunction<OperationInput, OperationResponse, T>>
 ) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.MockResolve.replace('{path}', operationName),
@@ -314,8 +344,9 @@ export function registerMockResolve<
 
 export function registerPreResolve<
   OperationInput extends OperationHookPayload['input'],
-  OperationResponse
->(operationName: string, fn: OperationHookFunction<OperationInput, OperationResponse>) {
+  OperationResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(operationName: string, fn: OperationHookFunction<OperationInput, OperationResponse, T>) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.PreResolve.replace('{path}', operationName),
     async (request, reply) => {
@@ -338,8 +369,12 @@ export function registerPreResolve<
 
 export function registerPostResolve<
   OperationInput extends OperationHookPayload['input'],
-  OperationResponse
->(operationName: string, fn: OperationWithResponseHookFunction<OperationInput, OperationResponse>) {
+  OperationResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(
+  operationName: string,
+  fn: OperationWithResponseHookFunction<OperationInput, OperationResponse, T>
+) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.PostResolve.replace('{path}', operationName),
     async (request, reply) => {
@@ -364,9 +399,12 @@ export function registerPostResolve<
   )
 }
 
-export function registerMutatingPreResolve<OperationInput extends OperationHookPayload['input']>(
+export function registerMutatingPreResolve<
+  OperationInput extends OperationHookPayload['input'],
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(
   operationName: string,
-  fn: MutatingPreResolveFunction<OperationWithoutResponseHookFunction<OperationInput>>
+  fn: MutatingPreResolveFunction<OperationWithoutResponseHookFunction<OperationInput, T>>
 ) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.MutatingPreResolve.replace('{path}', operationName),
@@ -391,10 +429,11 @@ export function registerMutatingPreResolve<OperationInput extends OperationHookP
 
 export function registerMutatingPostResolve<
   OperationInput extends OperationHookPayload['input'],
-  OperationResponse
+  OperationResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
 >(
   operationName: string,
-  fn: HeaderMutableFunction<OperationWithResponseHookFunction<OperationInput, OperationResponse>>
+  fn: HeaderMutableFunction<OperationWithResponseHookFunction<OperationInput, OperationResponse, T>>
 ) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.MutatingPostResolve.replace('{path}', operationName),
@@ -423,10 +462,11 @@ export function registerMutatingPostResolve<
 
 export function registerCustomResolve<
   OperationInput extends OperationHookPayload['input'],
-  OperationResponse
+  OperationResponse,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
 >(
   operationName: string,
-  fn: HeaderMutableFunction<OperationHookFunction<OperationInput, OperationResponse>>
+  fn: HeaderMutableFunction<OperationHookFunction<OperationInput, OperationResponse, T>>
 ) {
   fastify.post<FBFastifyRequest<OperationHookPayload>>(
     Endpoint.CustomResolve.replace('{path}', operationName),
@@ -452,10 +492,13 @@ export function registerCustomResolve<
   )
 }
 
-export function registerPreUpload<Meta = any>(
+export function registerPreUpload<
+  Meta = any,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(
   providerName: string,
   profileName: string,
-  fn: PreUploadHookFunction<Meta, UploadHookResponse>
+  fn: PreUploadHookFunction<Meta, UploadHookResponse, T>
 ) {
   fastify.post<FBFastifyRequest<UploadHookPayload>>(
     Endpoint.PreUpload.replace('{provider}', providerName).replace('{profile}', profileName),
@@ -480,10 +523,13 @@ export function registerPreUpload<Meta = any>(
   )
 }
 
-export function registerPostUpload<Meta = any>(
+export function registerPostUpload<
+  Meta = any,
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(
   providerName: string,
   profileName: string,
-  fn: PostUploadHookFunction<Meta, UploadHookResponse>
+  fn: PostUploadHookFunction<Meta, UploadHookResponse, T>
 ) {
   fastify.post<FBFastifyRequest<UploadHookPayload>>(
     Endpoint.PostUpload.replace('{provider}', providerName).replace('{profile}', profileName),

@@ -12,9 +12,13 @@ export type {
 } from '../operations.client'
 
 declare module 'fastify' {
-  export interface FastifyRequest {
-    ctx: BaseRequestContext
-  }
+  export interface FastifyRequest extends FireboomCommonRequest {}
+}
+
+export type FireboomCommonRequest<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = {
+  ctx: BaseRequestContext<T>
 }
 
 export type BaseRequestContext<
