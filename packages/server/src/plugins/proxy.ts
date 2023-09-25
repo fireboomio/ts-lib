@@ -1,14 +1,14 @@
 import type { FastifyInstance, FastifyPluginAsync, FastifyReply } from 'fastify'
 
 import { saveOperationConfig } from '../operation.json'
-import type { BaseReuqestContext, OnRequestHookPayload } from '../types'
+import type { BaseRequestContext, OnRequestHookPayload } from '../types'
 import { Endpoint, HookParent, OperationExecutionEngine } from '../types'
 import { replaceUrl } from '../utils'
 
 export interface ProxyConfig {
   handler: (
     input: Record<string, any>,
-    ctx: BaseReuqestContext,
+    ctx: BaseRequestContext,
     reply: FastifyReply
   ) => Promise<void>
 }

@@ -13,17 +13,17 @@ export type {
 
 declare module 'fastify' {
   export interface FastifyRequest {
-    ctx: BaseReuqestContext
+    ctx: BaseRequestContext
   }
 }
 
-export type FireboomOperationsDefinition = InternalOperationsDefinition
-
-export type BaseReuqestContext = {
+export type BaseRequestContext<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> = {
   user: User
   logger: Logger
   clientRequest: WunderGraphRequest
-  operationsClient: OperationsClient<FireboomOperationsDefinition>
+  operationsClient: OperationsClient<T>
 }
 
 export interface Request {

@@ -11,12 +11,14 @@ import {
 } from 'graphql-helix'
 
 import { saveOperationConfig } from '../operation.json'
-import type { BaseReuqestContext } from '../types'
+import type { BaseRequestContext, InternalOperationsDefinition } from '../types'
 import { Endpoint, HookParent } from '../types'
 import { replaceUrl } from '../utils'
 
-export interface FireboomExecutionContext {
-  fireboomContext: BaseReuqestContext
+export interface FireboomExecutionContext<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+> {
+  fireboomContext: BaseRequestContext<T>
 }
 
 export interface GraphQLServerConfig {

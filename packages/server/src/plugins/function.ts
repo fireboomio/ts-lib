@@ -8,7 +8,7 @@ import type { JsonSchema7Type } from 'zod-to-json-schema/src/parseDef'
 import type { JsonSchema7ObjectType } from 'zod-to-json-schema/src/parsers/object'
 
 import { saveOperationConfig } from '../operation.json'
-import type { BaseReuqestContext } from '../types'
+import type { BaseRequestContext } from '../types'
 import { Endpoint, HookParent, OperationExecutionEngine, OperationType } from '../types'
 import { replaceUrl } from '../utils'
 
@@ -18,11 +18,11 @@ export type FunctionConfig<T extends ZodRawShape = any> = {
 } & (
   | {
       operationType?: OperationType.QUERY | OperationType.MUTATION
-      handler: (input: Record<string, any>, ctx: BaseReuqestContext) => Promise<any>
+      handler: (input: Record<string, any>, ctx: BaseRequestContext) => Promise<any>
     }
   | {
       operationType: OperationType.SUBSCRIPTION
-      handler: (input: Record<string, any>, ctx: BaseReuqestContext) => AsyncGenerator<any>
+      handler: (input: Record<string, any>, ctx: BaseRequestContext) => AsyncGenerator<any>
     }
 )
 
