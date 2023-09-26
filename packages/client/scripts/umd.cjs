@@ -10,7 +10,7 @@ writeFileSync(
     .replace(`["mutations"]`, `[{{#each operations}}{{#if isMutation}}"{{path}}",{{/if}}{{/each}}]`)
     .replace(
       `["subscriptions"]`,
-      `[{{#each operations}}{{#if isSubscription}}"{{path}}",{{/if}}{{/each}}]`
+      `[{{#each operations}}{{#if (isAnyTrue isSubscription (isAllTrue isQuery isLiveQuery))}}"{{path}}",{{/if}}{{/each}}]`
     )
     .replace(
       `{baseURL:"http://localhost:9991"}`,
