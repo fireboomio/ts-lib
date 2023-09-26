@@ -47,25 +47,19 @@ export type UploadResponse = {
   fileKeys: string[]
 }
 
-export type UploadRequestOptions<
-  ProviderName = any,
-  ProfileName = any,
-  Meta = any
-> = ProfileName extends never | undefined
+export type UploadRequestOptions<ProviderName = any, ProfileName = any, Meta = any> = {
+  provider: ProviderName
+  files: FileList
+  abortSignal?: AbortSignal
+  directory?: string
+  meta?: Meta
+} & (ProfileName extends never | undefined
   ? {
-      provider: ProviderName
-      files: FileList
-      abortSignal?: AbortSignal
       profile?: ProfileName
-      meta?: Meta
     }
   : {
-      provider: ProviderName
-      files: FileList
-      abortSignal?: AbortSignal
       profile: ProfileName
-      meta?: Meta
-    }
+    })
 
 export type OperationMetadata = Record<
   string,

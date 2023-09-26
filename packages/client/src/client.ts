@@ -618,6 +618,11 @@ export class Client {
 
     const params = this.searchParams()
 
+    // append directory
+    if (config.directory) {
+      params.append('directory', config.directory)
+    }
+
     if ('profile' in config) {
       headers['X-Upload-Profile'] = (config as any).profile
     }
