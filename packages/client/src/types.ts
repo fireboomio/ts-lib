@@ -1,6 +1,7 @@
 import type { RequiredKeysOf, SetRequired } from 'type-fest'
 
 import type { GraphQLError, ValidationError } from './error'
+import type { S3UploadProfile, User } from './types.server'
 
 export type Headers = Record<string, any>
 
@@ -167,3 +168,43 @@ export type ClientConfig = {
    */
   forceMethod?: string
 }
+
+export type UploadValidationOptions = Pick<
+  S3UploadProfile,
+  'requireAuthentication' | 'maxAllowedUploadSizeBytes' | 'maxAllowedFiles'
+>
+
+export interface ClientOperation {
+  input?: object
+  liveQuery?: boolean
+  response: ClientResponse
+  requiresAuthentication: boolean
+}
+
+export type S3ProviderDefinition = Record<
+  string,
+  {
+    hasProfiles: boolean
+    profiles: Record<string, object>
+  }
+>
+
+export interface OperationsDefinition<
+  Queries extends OperationDefinition = OperationDefinition,
+  Mutations extends OperationDefinition = OperationDefinition,
+  Subscriptions extends OperationDefinition = OperationDefinition,
+  LiveQueries extends OperationDefinition = OperationDefinition,
+  UserRole extends string = string,
+  S3Provider extends S3ProviderDefinition = S3ProviderDefinition,
+  AuthProvider extends string = string
+> {
+  user: User<UserRole>
+  s3Provider: S3Provider
+  authProvider: AuthProvider
+  queries: Queries
+  mutations: Mutations
+  subscriptions: Subscriptions
+  liveQueries: LiveQueries
+}
+
+export type OperationDefinition = Record<string, ClientOperation>

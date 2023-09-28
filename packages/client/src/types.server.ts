@@ -1,10 +1,13 @@
 export type User_customClaims = Record<string, any>
 
-export type User = {
+export type User<
+  Role extends string = any,
+  CustomClaims extends User_customClaims = User_customClaims
+> = {
   accessToken?: any
   birthDate?: string
   customAttributes?: string[]
-  customClaims?: User_customClaims
+  customClaims?: CustomClaims
   email?: string
   emailVerified?: boolean
   etag?: string
@@ -25,7 +28,7 @@ export type User = {
   providerId?: string
   rawAccessToken?: string
   rawIdToken?: string
-  roles: string[]
+  roles: Role[]
   userId?: string
   website?: string
   zoneInfo?: string
