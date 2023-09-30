@@ -10,9 +10,9 @@ import type {
   S3ClientInfo,
   SubscriptionEventHandler,
   SubscriptionRequestOptions,
-  UploadRequestOptions
+  UploadRequestOptions,
+  UploadValidationOptions
 } from './types'
-import type { S3UploadProfile } from './types.server'
 
 let client: Client
 let s3Providers: Record<string, S3ClientInfo> = {}
@@ -98,7 +98,7 @@ export default {
   unsetAuthorization: () => client.unsetAuthorization(),
   uploadFiles: (
     config: UploadRequestOptions & { appendEndpoint?: boolean },
-    validation?: S3UploadProfile
+    validation?: UploadValidationOptions
   ) => {
     return client.uploadFiles(config, validation).then(resp => {
       if (config.appendEndpoint !== false) {
@@ -110,6 +110,6 @@ export default {
       return resp
     })
   },
-  validateFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
+  validateFiles: (config: UploadRequestOptions, validation?: UploadValidationOptions) =>
     client.validateFiles(config, validation)
 }

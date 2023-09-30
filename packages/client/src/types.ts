@@ -1,15 +1,9 @@
 import type { RequiredKeysOf, SetRequired } from 'type-fest'
 
-import type { GraphQLError, ValidationError } from './error'
+import type { ValidationError } from './error'
 import type { S3UploadProfile, User } from './types.server'
 
 export type Headers = Record<string, any>
-
-// @ts-ignore
-export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>
-
-// @ts-ignore
-export type JSONObject = Record<string, JSONValue>
 
 export type ClientResponse<Data = any, Error = any> = {
   data?: Data
@@ -48,19 +42,23 @@ export type UploadResponse = {
   fileKeys: string[]
 }
 
-export type UploadRequestOptions<ProviderName = any, ProfileName = any, Meta = any> = {
-  provider: ProviderName
-  files: FileList
-  abortSignal?: AbortSignal
-  directory?: string
-  meta?: Meta
-} & (ProfileName extends never | undefined
+export type UploadRequestOptions<
+  ProviderName = string,
+  ProfileName = string,
+  Meta = any
+> = (ProfileName extends never | undefined
   ? {
       profile?: ProfileName
     }
   : {
       profile: ProfileName
-    })
+    }) & {
+  provider: ProviderName
+  files: FileList
+  abortSignal?: AbortSignal
+  directory?: string
+  meta?: Meta
+}
 
 export type OperationMetadata = Record<
   string,
@@ -86,14 +84,6 @@ export type OperationRequestOptions<
    */
   abortSignal?: AbortSignal
   input?: Input
-}
-
-export type GraphQLResponse<
-  ResponseData extends JSONObject = any,
-  ResponseError extends GraphQLError = any
-> = {
-  data?: ResponseData
-  errors?: ResponseError[]
 }
 
 export type HasRequiredInput<Input extends object | undefined> = Input extends object
@@ -169,10 +159,7 @@ export type ClientConfig = {
   forceMethod?: string
 }
 
-export type UploadValidationOptions = Pick<
-  S3UploadProfile,
-  'requireAuthentication' | 'maxAllowedUploadSizeBytes' | 'maxAllowedFiles'
->
+export type UploadValidationOptions = Partial<Omit<S3UploadProfile, 'hooks' | 'metadataJSONSchema'>>
 
 export interface ClientOperation {
   input?: object
@@ -214,3 +201,12 @@ export type S3ClientInfo = {
   bucketName: string
   endpoint: string
 }
+
+export type ExtractProfileName<Profile> = keyof Profile extends never
+  ? undefined
+  : Extract<keyof Profile, string>
+
+export type ExtractMeta<
+  Profiles extends Record<string, object>,
+  ProfileName extends string | undefined
+> = ProfileName extends string ? Profiles[ProfileName] : never

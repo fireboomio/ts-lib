@@ -5,7 +5,6 @@ import type {
   ClientConfig,
   ClientResponse,
   FetchUserRequestOptions,
-  GraphQLResponse,
   Headers,
   LogoutOptions,
   LogoutResponse,
@@ -15,9 +14,10 @@ import type {
   SubscriptionRequestOptions,
   UploadRequestOptions,
   UploadResponse,
+  UploadValidationOptions,
   ValidationResponseJSON
 } from './types'
-import type { S3UploadProfile, User } from './types.server'
+import type { GraphQLResponse, User } from './types.server'
 import { deepClone } from './utils/helper'
 
 /**
@@ -600,7 +600,7 @@ export class Client {
    */
   public async uploadFiles<UploadOptions extends UploadRequestOptions>(
     config: UploadOptions,
-    validation?: S3UploadProfile
+    validation?: UploadValidationOptions
   ): Promise<UploadResponse> {
     this.validateFiles(config, validation)
     const formData = new FormData()
@@ -662,7 +662,7 @@ export class Client {
     }
   }
 
-  public validateFiles(config: UploadRequestOptions, validation?: S3UploadProfile) {
+  public validateFiles(config: UploadRequestOptions, validation?: UploadValidationOptions) {
     if (validation?.maxAllowedFiles && config.files.length > validation.maxAllowedFiles) {
       throw new Error(
         `uploading ${config.files.length} exceeds the maximum allowed (${validation.maxAllowedFiles})`

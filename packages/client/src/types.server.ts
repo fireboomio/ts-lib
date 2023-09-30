@@ -1,3 +1,5 @@
+import type { GraphQLError } from './error'
+
 export type User_customClaims = Record<string, any>
 
 export type User<
@@ -47,4 +49,17 @@ export type S3UploadProfile = {
 export type S3UploadProfileHooksConfiguration = {
   postUpload: boolean
   preUpload: boolean
+}
+// @ts-ignore
+export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>
+
+// @ts-ignore
+export type JSONObject = Record<string, JSONValue>
+
+export type GraphQLResponse<
+  ResponseData extends JSONObject = any,
+  ResponseError extends GraphQLError = any
+> = {
+  data?: ResponseData
+  errors?: ResponseError[]
 }
