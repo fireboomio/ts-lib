@@ -7,6 +7,7 @@ import type {
   LogoutOptions,
   MutationRequestOptions,
   QueryRequestOptions,
+  S3ClientInfo,
   SubscriptionEventHandler,
   SubscriptionRequestOptions,
   UploadRequestOptions
@@ -14,9 +15,14 @@ import type {
 import type { S3UploadProfile } from './types.server'
 
 let client: Client
+let s3Providers: Record<string, S3ClientInfo> = {}
 
-function init(options: Omit<ClientConfig, 'forceMethod'>) {
+function init(
+  options: Omit<ClientConfig, 'forceMethod'>,
+  _s3Providers?: Record<string, S3ClientInfo>
+) {
   client = new Client(options)
+  s3Providers = _s3Providers ?? {}
 }
 
 init({ baseURL: 'http://localhost:9991' })
@@ -90,8 +96,20 @@ export default {
   setAuthorizationToken: (token: string) => client.setAuthorizationToken(token),
   setExtraHeaders: (headers: Headers) => client.setExtraHeaders(headers),
   unsetAuthorization: () => client.unsetAuthorization(),
-  uploadFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
-    client.uploadFiles(config, validation),
+  uploadFiles: (
+    config: UploadRequestOptions & { appendEndpoint?: boolean },
+    validation?: S3UploadProfile
+  ) => {
+    return client.uploadFiles(config, validation).then(resp => {
+      if (config.appendEndpoint !== false) {
+        const { useSSL, bucketName, endpoint } = s3Providers[config.provider] ?? {}
+        resp.fileKeys = resp.fileKeys.map(
+          k => `${useSSL ? `https://` : `http://`}${bucketName}.${endpoint}/${k}`
+        )
+      }
+      return resp
+    })
+  },
   validateFiles: (config: UploadRequestOptions, validation?: S3UploadProfile) =>
     client.validateFiles(config, validation)
 }

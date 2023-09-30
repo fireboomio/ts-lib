@@ -14,7 +14,15 @@ writeFileSync(
     )
     .replace(
       `{baseURL:"http://localhost:9991"}`,
-      `{baseURL:"{{baseURL}}",csrfEnabled:{{enableCSRFProtect}},requestTimeoutMs:30000,operationMetadata:{ {{#each operations}}'{{path}}':{requiresAuthentication:{{authRequired}} },{{/each}} }}`
+      `{baseURL:"{{baseURL}}",csrfEnabled:{{enableCSRFProtect}},requestTimeoutMs:30000,operationMetadata:{
+        {{~#each operations~}}
+          '{{path}}':{requiresAuthentication:{{authRequired}} },
+        {{~/each~}}
+      }},{
+      {{~#each s3Providers~}}
+      {{name}}: {useSSL:{{useSSL}},bucketName:'{{getVariableString bucketName}}',endpoint:'{{getVariableString endpoint}}'}
+      {{~#unless @last}},{{/unless}}
+      {{~/each}} }`
     ),
   'utf-8'
 )

@@ -208,3 +208,9 @@ export interface OperationsDefinition<
 }
 
 export type OperationDefinition = Record<string, ClientOperation>
+
+export type S3ClientInfo = {
+  useSSL: boolean
+  bucketName: string
+  endpoint: string
+}
