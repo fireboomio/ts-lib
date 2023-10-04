@@ -26,11 +26,6 @@
   "prettier": "@doremijs/prettier-config",
   "eslintConfig": {
     "root": true,
-    "extends": "@doremijs",
-    "settings": {
-      "react": {
-        "version": "999.999.999"
-      }
-    }
+    "extends": "@doremijs"
   }
 }
