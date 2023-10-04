@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "postinstall": "husky install",
-    "eslint": "eslint packages/**/*.{js,ts,tsx} --color --fix",
+    "eslint": "eslint \"packages/**/*.{js,ts,tsx}\" --color --fix",
     "format": "prettier --write ."
   },
   "devDependencies": {

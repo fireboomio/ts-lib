@@ -35,3 +35,6 @@ public/
 # Configuration files
 .browserslistrc
 .editorconfig
+
+# Template file
+*.hbs

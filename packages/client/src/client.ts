@@ -507,9 +507,7 @@ export class Client {
     })
   }
 
-  protected async fetchSubscription<Data = any, Error = any>(
-    subscription: SubscriptionRequestOptions
-  ) {
+  protected async fetchSubscription(subscription: SubscriptionRequestOptions) {
     const params = this.searchParams({
       wg_json_patch: ''
     })
@@ -604,6 +602,7 @@ export class Client {
   ): Promise<UploadResponse> {
     this.validateFiles(config, validation)
     const formData = new FormData()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const [_, file] of Object.entries(config.files)) {
       if (file instanceof Blob) {
         formData.append('files', file)
