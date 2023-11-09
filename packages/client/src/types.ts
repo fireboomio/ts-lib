@@ -136,7 +136,7 @@ export type ClientConfig = {
   applicationHash?: string
   baseURL: string
   sdkVersion?: string
-  customFetch?: (input: RequestInfo, init?: RequestInit) => Promise<globalThis.Response>
+  customFetch?: (url: string, init?: RequestInit) => Promise<globalThis.Response>
   extraHeaders?: Headers
   operationMetadata?: OperationMetadata
   /**

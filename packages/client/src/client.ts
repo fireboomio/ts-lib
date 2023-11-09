@@ -88,7 +88,7 @@ export class Client {
     return this.fetch(url, init)
   }
 
-  private async fetch(input: RequestInfo, init: RequestInit = {}): Promise<globalThis.Response> {
+  private async fetch(url: string, init: RequestInit = {}): Promise<globalThis.Response> {
     const fetchImpl = this.options.customFetch || globalThis.fetch
 
     init.headers = {
@@ -112,7 +112,7 @@ export class Client {
       typeof window !== 'undefined' ? { credentials: 'include', mode: 'cors' } : {}
 
     try {
-      const resp = await fetchImpl(input, {
+      const resp = await fetchImpl(url, {
         ...extraInit,
         ...init
       })

@@ -1,6 +1,6 @@
 {
   "name": "@fireboom/client",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "type": "module",
@@ -17,6 +17,10 @@
         "default": "./dist/index.js"
       }
     },
+    "./package.json": "./package.json"
+  },
+  "browser": {
+    ".": "./esm/index.js",
     "./package.json": "./package.json"
   },
   "scripts": {
