@@ -5,8 +5,8 @@
     "outDir": "./umd",
     "baseUrl": ".",
     "module": "ESNext",
-    "importHelpers": true,
-    "target": "ES5",
+    "importHelpers": false,
+    "target": "ES2015",
     "composite": false,
     "declaration": false,
     "noEmit": false
