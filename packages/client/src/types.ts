@@ -4,6 +4,7 @@ import type { ValidationError } from './error'
 import type { S3UploadProfile, User } from './types.server'
 
 export type Headers = HeadersInit
+export type PromiseOr<T> = T | Promise<T>
 
 export type ClientResponse<Data = any, Error = any> = {
   data?: Data
@@ -158,6 +159,14 @@ export type ClientConfig = {
    * but not GET/POST
    */
   forceMethod?: string
+  /**
+   * run before fetch request
+   */
+  requestInterceptor: RequestInterceptor
+  /**
+   * run after fetch request
+   */
+  responseInterceptor: ResponseInterceptor
 }
 
 export type UploadValidationOptions = Partial<Omit<S3UploadProfile, 'hooks' | 'metadataJSONSchema'>>
@@ -211,3 +220,13 @@ export type ExtractMeta<
   Profiles extends Record<string, object>,
   ProfileName extends string | undefined
 > = ProfileName extends string ? Profiles[ProfileName] : never
+
+type RequestInterceptorArg = { url: string; init: RequestInit }
+export type RequestInterceptor = (
+  args: RequestInterceptorArg
+) => PromiseOr<RequestInterceptorArg> | null | undefined
+
+type ResponseInterceptorArgs = RequestInterceptorArg & { response: Response }
+export type ResponseInterceptor = (
+  args: ResponseInterceptorArgs
+) => Promise<Response | null | undefined>

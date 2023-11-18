@@ -36,9 +36,7 @@ export class Client {
           'WG-SDK-Version': options.sdkVersion
         }
       : {}
-
     this.extraHeaders = { ...options.extraHeaders }
-
     this.csrfEnabled = options.csrfEnabled ?? true
   }
 
@@ -111,12 +109,36 @@ export class Client {
     const extraInit: RequestInit =
       typeof window !== 'undefined' ? { credentials: 'include', mode: 'cors' } : {}
 
+    let fetchInit: RequestInit = {
+      ...extraInit,
+      ...init
+    }
+
     try {
-      const resp = await fetchImpl(url, {
-        ...extraInit,
-        ...init
-      })
-      return resp
+      let _url = url
+      /**
+       * run interceptor before fetch
+       * and use the returned value needed
+       */
+      if (this.options.requestInterceptor) {
+        const res = await this.options.requestInterceptor({ url, init })
+        if (res) {
+          _url = res.url
+          fetchInit = res.init
+        }
+      }
+      const response = await fetchImpl(_url, fetchInit)
+      /**
+       * run interceptor after fetch
+       * and use the returned value as needed
+       */
+      if (this.options.responseInterceptor) {
+        const resp = await this.options.responseInterceptor({ url, init, response })
+        if (resp) {
+          return resp
+        }
+      }
+      return response
     } finally {
       if (timeout) {
         clearTimeout(timeout)
