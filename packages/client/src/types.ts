@@ -162,11 +162,11 @@ export type ClientConfig = {
   /**
    * run before fetch request
    */
-  requestInterceptor: RequestInterceptor
+  requestInterceptor?: RequestInterceptor
   /**
    * run after fetch request
    */
-  responseInterceptor: ResponseInterceptor
+  responseInterceptor?: ResponseInterceptor
 }
 
 export type UploadValidationOptions = Partial<Omit<S3UploadProfile, 'hooks' | 'metadataJSONSchema'>>
