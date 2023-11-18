@@ -76,7 +76,7 @@ export class Client {
     return searchParams
   }
 
-  protected async fetchJson(url: string, init: RequestInit = {}) {
+  protected async fetchJson(url: string, init: RequestInit & { timeout?: number } = {}) {
     init.headers = {
       ...init.headers,
       Accept: 'application/json',
@@ -86,7 +86,10 @@ export class Client {
     return this.fetch(url, init)
   }
 
-  private async fetch(url: string, init: RequestInit = {}): Promise<globalThis.Response> {
+  private async fetch(
+    url: string,
+    init: RequestInit & { timeout?: number } = {}
+  ): Promise<globalThis.Response> {
     const fetchImpl = this.options.customFetch || globalThis.fetch
 
     init.headers = {
@@ -96,11 +99,11 @@ export class Client {
     }
 
     let timeout: number | undefined
-
-    if (!init.signal && this.options.requestTimeoutMs && this.options.requestTimeoutMs > 0) {
+    let timeoutMs = init.timeout ?? this.options.requestTimeoutMs
+    if (!init.signal && timeoutMs && timeoutMs > 0) {
       const controller = new AbortController()
       // @ts-ignore
-      timeout = setTimeout(() => controller.abort(), this.options.requestTimeoutMs)
+      timeout = setTimeout(() => controller.abort(), timeoutMs)
       init.signal = controller.signal
     }
 
@@ -330,7 +333,8 @@ export class Client {
     const resp = await this.fetchJson(url, {
       method: this.options.forceMethod || 'GET',
       signal: options.abortSignal,
-      headers: options.headers
+      headers: options.headers,
+      timeout: options.timeout
     })
 
     return this.fetchResponseToClientResponse(resp)
@@ -375,7 +379,8 @@ export class Client {
       method: this.options.forceMethod || 'POST',
       signal: options.abortSignal,
       body: this.stringifyInput(options.input),
-      headers
+      headers,
+      timeout: options.timeout
     })
 
     return this.fetchResponseToClientResponse(resp)
@@ -494,23 +499,24 @@ export class Client {
     })
   }
 
-  protected async fetchSubscription(subscription: SubscriptionRequestOptions) {
+  protected async fetchSubscription(options: SubscriptionRequestOptions) {
     const params = this.searchParams({
       wg_json_patch: ''
     })
-    const variables = this.stringifyInput(subscription.input)
+    const variables = this.stringifyInput(options.input)
     if (variables) {
       params.set('wg_variables', variables)
     }
-    if (subscription.liveQuery) {
+    if (options.liveQuery) {
       params.set('wg_live', '')
     }
 
-    const url = this.addUrlParams(this.operationUrl(subscription.operationName), params)
+    const url = this.addUrlParams(this.operationUrl(options.operationName), params)
     return await this.fetchJson(url, {
       method: this.options.forceMethod || 'GET',
-      signal: subscription.abortSignal,
-      headers: subscription.headers
+      signal: options.abortSignal,
+      headers: options.headers,
+      timeout: options.timeout
     })
   }
 

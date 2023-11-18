@@ -86,6 +86,10 @@ export type OperationRequestOptions<
   abortSignal?: AbortSignal
   input?: Input
   headers?: Headers
+  /**
+   * api specified timeout
+   */
+  timeout?: number
 }
 
 export type HasRequiredInput<Input extends object | undefined> = Input extends object
