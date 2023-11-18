@@ -257,6 +257,37 @@ export class Client {
     delete this.extraHeaders['Authorization']
   }
 
+  /**
+   * Handles authentication errors from a failed attempt in a browser context
+   * by examining window.location.href
+   */
+  private handleAuthenticationError() {
+    if (typeof window !== 'undefined') {
+      const href = window.location.href
+      const sep = href.indexOf('?')
+      const query = href.substring(sep)
+      const searchParams = new URLSearchParams(query)
+      const errorCode = searchParams.get('_wg.auth.error.code')
+      const errorMessage = searchParams.get('_wg.auth.error.message')
+      if (errorCode || errorMessage) {
+        searchParams.delete('_wg.auth.error.code')
+        searchParams.delete('_wg.auth.error.message')
+        const newQuery = searchParams.toString()
+        const nonQuery = href.substring(0, sep)
+        let nextUrl: string
+        if (newQuery) {
+          nextUrl = `${nonQuery}?${newQuery}`
+        } else {
+          nextUrl = nonQuery
+        }
+        const code = decodeURIComponent(errorCode || '')
+        const message = decodeURIComponent(errorMessage || errorCode || '')
+        window.history.replaceState({}, window.document.title, nextUrl)
+        throw new ResponseError({ code, message, statusCode: 401 })
+      }
+    }
+  }
+
   /***
    * Query makes a GET request to the server.
    * The method only throws an error if the request fails to reach the server or
@@ -276,7 +307,8 @@ export class Client {
     const url = this.addUrlParams(this.operationUrl(options.operationName), params)
     const resp = await this.fetchJson(url, {
       method: this.options.forceMethod || 'GET',
-      signal: options.abortSignal
+      signal: options.abortSignal,
+      headers: options.headers
     })
 
     return this.fetchResponseToClientResponse(resp)
@@ -311,7 +343,7 @@ export class Client {
     const params = this.searchParams()
     const url = this.addUrlParams(this.operationUrl(options.operationName), params)
 
-    const headers: Headers = {}
+    const headers: Headers = { ...options.headers }
 
     if (this.shouldIncludeCsrfToken(this.isAuthenticatedOperation(options.operationName))) {
       headers['X-CSRF-Token'] = await this.getCSRFToken()
@@ -325,73 +357,6 @@ export class Client {
     })
 
     return this.fetchResponseToClientResponse(resp)
-  }
-
-  /**
-   * Handles authentication errors from a failed attempt in a browser context
-   * by examining window.location.href
-   */
-  private handleAuthenticationError() {
-    if (typeof window !== 'undefined') {
-      const href = window.location.href
-      const sep = href.indexOf('?')
-      const query = href.substring(sep)
-      const searchParams = new URLSearchParams(query)
-      const errorCode = searchParams.get('_wg.auth.error.code')
-      const errorMessage = searchParams.get('_wg.auth.error.message')
-      if (errorCode || errorMessage) {
-        searchParams.delete('_wg.auth.error.code')
-        searchParams.delete('_wg.auth.error.message')
-        const newQuery = searchParams.toString()
-        const nonQuery = href.substring(0, sep)
-        let nextUrl: string
-        if (newQuery) {
-          nextUrl = `${nonQuery}?${newQuery}`
-        } else {
-          nextUrl = nonQuery
-        }
-        const code = decodeURIComponent(errorCode || '')
-        const message = decodeURIComponent(errorMessage || errorCode || '')
-        window.history.replaceState({}, window.document.title, nextUrl)
-        throw new ResponseError({ code, message, statusCode: 401 })
-      }
-    }
-  }
-
-  /***
-   * fetchUser makes a GET request to the server to fetch the current user.
-   * The method throws an error if the request fails to reach the server or
-   * the server returns a non-200 status code.
-   */
-  public async fetchUser<U extends User>(options?: FetchUserRequestOptions): Promise<U> {
-    this.handleAuthenticationError()
-
-    const params = this.searchParams()
-    if (options?.revalidate) {
-      params.set('revalidate', '')
-    }
-    const response = await this.fetchJson(
-      this.addUrlParams(`${this.options.baseURL}/auth/user`, params),
-      {
-        method: 'GET',
-        signal: options?.abortSignal
-      }
-    )
-
-    if (!response.ok) {
-      this.userIsAuthenticated = false
-      throw await this.handleClientResponseError(response)
-    }
-
-    if (response.status == 204) {
-      this.userIsAuthenticated = false
-      // No user is signed in. Keep this in sync with pkg/authentication/authentication.go
-      throw new NoUserError({ statusCode: response.status })
-    }
-
-    const user = response.json()
-    this.userIsAuthenticated = true
-    return user
   }
 
   /**
@@ -522,7 +487,8 @@ export class Client {
     const url = this.addUrlParams(this.operationUrl(subscription.operationName), params)
     return await this.fetchJson(url, {
       method: this.options.forceMethod || 'GET',
-      signal: subscription.abortSignal
+      signal: subscription.abortSignal,
+      headers: subscription.headers
     })
   }
 
@@ -700,6 +666,42 @@ export class Client {
         }
       }
     }
+  }
+
+  /***
+   * fetchUser makes a GET request to the server to fetch the current user.
+   * The method throws an error if the request fails to reach the server or
+   * the server returns a non-200 status code.
+   */
+  public async fetchUser<U extends User>(options?: FetchUserRequestOptions): Promise<U> {
+    this.handleAuthenticationError()
+
+    const params = this.searchParams()
+    if (options?.revalidate) {
+      params.set('revalidate', '')
+    }
+    const response = await this.fetchJson(
+      this.addUrlParams(`${this.options.baseURL}/auth/user`, params),
+      {
+        method: 'GET',
+        signal: options?.abortSignal
+      }
+    )
+
+    if (!response.ok) {
+      this.userIsAuthenticated = false
+      throw await this.handleClientResponseError(response)
+    }
+
+    if (response.status == 204) {
+      this.userIsAuthenticated = false
+      // No user is signed in. Keep this in sync with pkg/authentication/authentication.go
+      throw new NoUserError({ statusCode: response.status })
+    }
+
+    const user = response.json()
+    this.userIsAuthenticated = true
+    return user
   }
 
   public login(authProviderID: string, redirectURI?: string) {

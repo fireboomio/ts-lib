@@ -3,7 +3,7 @@ import type { RequiredKeysOf, SetRequired } from 'type-fest'
 import type { ValidationError } from './error'
 import type { S3UploadProfile, User } from './types.server'
 
-export type Headers = Record<string, any>
+export type Headers = HeadersInit
 
 export type ClientResponse<Data = any, Error = any> = {
   data?: Data
@@ -84,6 +84,7 @@ export type OperationRequestOptions<
    */
   abortSignal?: AbortSignal
   input?: Input
+  headers?: Headers
 }
 
 export type HasRequiredInput<Input extends object | undefined> = Input extends object
