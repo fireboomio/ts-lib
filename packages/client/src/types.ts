@@ -233,4 +233,4 @@ export type RequestInterceptor = (
 type ResponseInterceptorArgs = RequestInterceptorArg & { response: Response }
 export type ResponseInterceptor = (
   args: ResponseInterceptorArgs
-) => Promise<Response | null | undefined>
+) => PromiseOr<Response | null | undefined>
