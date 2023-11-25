@@ -214,7 +214,8 @@ export class Client {
       return new ResponseError({
         cause: e,
         statusCode: response.status,
-        message: text || 'Invalid response from server'
+        message:
+          text.replaceAll('hooks pipeline failed:', '').trim() || 'Invalid response from server'
       })
     }
   }
