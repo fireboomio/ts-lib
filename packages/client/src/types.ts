@@ -90,7 +90,7 @@ export type OperationRequestOptions<
    * api specified timeout
    */
   timeout?: number
-}
+} & Pick<ClientConfig, 'requestInterceptor' | 'responseInterceptor'>
 
 export type HasRequiredInput<Input extends object | undefined> = Input extends object
   ? RequiredKeysOf<Input> extends never
@@ -172,6 +172,10 @@ export type ClientConfig = {
    */
   responseInterceptor?: ResponseInterceptor
 }
+
+export type FetchOptions = RequestInit & {
+  timeout?: number
+} & Pick<ClientConfig, 'requestInterceptor' | 'responseInterceptor'>
 
 export type UploadValidationOptions = Partial<Omit<S3UploadProfile, 'hooks' | 'metadataJSONSchema'>>
 

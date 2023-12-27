@@ -4,6 +4,7 @@ import { AuthorizationError, InputValidationError, NoUserError, ResponseError } 
 import type {
   ClientConfig,
   ClientResponse,
+  FetchOptions,
   FetchUserRequestOptions,
   Headers,
   LogoutOptions,
@@ -76,7 +77,7 @@ export class Client {
     return searchParams
   }
 
-  protected async fetchJson(url: string, init: RequestInit & { timeout?: number } = {}) {
+  protected async fetchJson(url: string, init: FetchOptions = {}) {
     init.headers = {
       ...init.headers,
       Accept: 'application/json',
@@ -86,10 +87,7 @@ export class Client {
     return this.fetch(url, init)
   }
 
-  private async fetch(
-    url: string,
-    init: RequestInit & { timeout?: number } = {}
-  ): Promise<globalThis.Response> {
+  private async fetch(url: string, init: FetchOptions = {}): Promise<globalThis.Response> {
     const fetchImpl = this.options.customFetch || globalThis.fetch
 
     init.headers = {
@@ -116,29 +114,54 @@ export class Client {
       ...extraInit,
       ...init
     }
+    let _url = url
 
     try {
-      let _url = url
       /**
-       * run interceptor before fetch
+       * run request interceptor before global interceptor
        * and use the returned value needed
        */
-      if (this.options.requestInterceptor) {
-        const res = await this.options.requestInterceptor({ url, init })
+      if (init.requestInterceptor) {
+        const res = await init.requestInterceptor({ url: _url, init: fetchInit })
         if (res) {
           _url = res.url
           fetchInit = res.init
         }
       }
-      const response = await fetchImpl(_url, fetchInit)
       /**
-       * run interceptor after fetch
+       * run global request interceptor before fetch
+       * and use the returned value needed
+       */
+      if (this.options.requestInterceptor) {
+        const res = await this.options.requestInterceptor({ url: _url, init: fetchInit })
+        if (res) {
+          _url = res.url
+          fetchInit = res.init
+        }
+      }
+      let response = await fetchImpl(_url, fetchInit)
+      /**
+       * run global interceptor after fetch
        * and use the returned value as needed
        */
       if (this.options.responseInterceptor) {
-        const resp = await this.options.responseInterceptor({ url, init, response })
+        const resp = await this.options.responseInterceptor({
+          url: _url,
+          init: fetchInit,
+          response
+        })
         if (resp) {
-          return resp
+          response = resp
+        }
+      }
+      /**
+       * run request interceptor after global interceptor
+       * and use the returned value as needed
+       */
+      if (init.responseInterceptor) {
+        const resp = await init.responseInterceptor({ url: _url, init: fetchInit, response })
+        if (resp) {
+          response = resp
         }
       }
       return response
@@ -335,7 +358,9 @@ export class Client {
       method: this.options.forceMethod || 'GET',
       signal: options.abortSignal,
       headers: options.headers,
-      timeout: options.timeout
+      timeout: options.timeout,
+      requestInterceptor: options.requestInterceptor,
+      responseInterceptor: options.responseInterceptor
     })
 
     return this.fetchResponseToClientResponse(resp)
@@ -381,7 +406,9 @@ export class Client {
       signal: options.abortSignal,
       body: this.stringifyInput(options.input),
       headers,
-      timeout: options.timeout
+      timeout: options.timeout,
+      requestInterceptor: options.requestInterceptor,
+      responseInterceptor: options.responseInterceptor
     })
 
     return this.fetchResponseToClientResponse(resp)
@@ -517,7 +544,9 @@ export class Client {
       method: this.options.forceMethod || 'GET',
       signal: options.abortSignal,
       headers: options.headers,
-      timeout: options.timeout
+      timeout: options.timeout,
+      requestInterceptor: options.requestInterceptor,
+      responseInterceptor: options.responseInterceptor
     })
   }
 
