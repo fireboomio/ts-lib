@@ -232,9 +232,9 @@ export type ExtractMeta<
 type RequestInterceptorArg = { url: string; init: RequestInit }
 export type RequestInterceptor = (
   args: RequestInterceptorArg
-) => PromiseOr<RequestInterceptorArg> | null | undefined
+) => PromiseOr<RequestInterceptorArg | null | undefined | void>
 
 type ResponseInterceptorArgs = RequestInterceptorArg & { response: Response }
 export type ResponseInterceptor = (
   args: ResponseInterceptorArgs
-) => PromiseOr<Response | null | undefined>
+) => PromiseOr<Response | null | undefined | void>
