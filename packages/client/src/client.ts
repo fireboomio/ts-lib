@@ -118,22 +118,22 @@ export class Client {
 
     try {
       /**
-       * run request interceptor before global interceptor
+       * run global request interceptor before fetch
        * and use the returned value needed
        */
-      if (init.requestInterceptor) {
-        const res = await init.requestInterceptor({ url: _url, init: fetchInit })
+      if (this.options.requestInterceptor) {
+        const res = await this.options.requestInterceptor({ url: _url, init: fetchInit })
         if (res) {
           _url = res.url
           fetchInit = res.init
         }
       }
       /**
-       * run global request interceptor before fetch
+       * run request interceptor before global interceptor
        * and use the returned value needed
        */
-      if (this.options.requestInterceptor) {
-        const res = await this.options.requestInterceptor({ url: _url, init: fetchInit })
+      if (init.requestInterceptor) {
+        const res = await init.requestInterceptor({ url: _url, init: fetchInit })
         if (res) {
           _url = res.url
           fetchInit = res.init
