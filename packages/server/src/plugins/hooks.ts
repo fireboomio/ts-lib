@@ -234,6 +234,33 @@ export function registerBeforeOriginRequest<
   )
 }
 
+export function registerAfterOriginResponse<
+  T extends InternalOperationsDefinition = InternalOperationsDefinition
+>(fn: GlobalHookFunction<OnResponseHookPayload, T, OnResponseHookResponse['response']>) {
+  fastify.post<
+    FBFastifyRequest<OnResponseHookPayload, PartialKey<OnResponseHookResponse, 'response'>>
+  >(Endpoint.AfterOriginResponse, async (request, reply) => {
+    reply.type('application/json').code(200)
+    try {
+      const maybeHookOut = await fn({ ...request.ctx, ...request.body })
+      const hookOut = maybeHookOut || 'skip'
+      return {
+        op: request.body.operationName,
+        hook: MiddlewareHook.AfterOriginResponse,
+        response: {
+          skip: hookOut === 'skip',
+          cancel: hookOut === 'cancel',
+          response: hookOut !== 'skip' && hookOut !== 'cancel' ? { ...hookOut } : undefined
+        }
+      }
+    } catch (err) {
+      request.log.error(err)
+      reply.code(500)
+      return { hook: MiddlewareHook.AfterOriginResponse, error: err }
+    }
+  })
+}
+
 export function registerOnOriginRequest<
   T extends InternalOperationsDefinition = InternalOperationsDefinition
 >(fn: GlobalHookFunction<OnRequestHookPayload, T, OnRequestHookResponse['request']>) {
