@@ -55,6 +55,6 @@ export const FireboomProxiesPlugin: FastifyPluginAsync = async _fastify => {
   proxyNameList = []
 }
 
-export function getproxyNameList() {
+export function getProxyNameList() {
   return proxyNameList
 }
