@@ -16,7 +16,10 @@ import { FireboomHooksPlugin } from './plugins/hooks'
 import { FireboomProxiesPlugin } from './plugins/proxy'
 import type { BaseRequestBody, HookServerConfiguration } from './types'
 
-export async function startServer(config: HookServerConfiguration, hooks?: { onStartUp?: VoidFunction }) {
+export async function startServer(
+  config: HookServerConfiguration,
+  hooks?: { onStartUp?: VoidFunction }
+) {
   logger.level = config.logLevel || 'info'
   configEnv({ path: resolve(process.cwd(), config.envFilePath) })
   let id = 0

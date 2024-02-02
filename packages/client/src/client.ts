@@ -9,6 +9,7 @@ import type {
   Headers,
   LogoutOptions,
   LogoutResponse,
+  LowLevelRequestOptions,
   MutationRequestOptions,
   QueryRequestOptions,
   SubscriptionEventHandler,
@@ -50,7 +51,7 @@ export class Client {
   }
 
   protected operationUrl(operationName: string) {
-    return this.options.baseURL + '/operations/' + operationName
+    return `${this.options.baseURL}/operations/${operationName}`
   }
 
   protected addUrlParams(url: string, queryParams: URLSearchParams): string {
@@ -97,7 +98,7 @@ export class Client {
     }
 
     let timeout: number | undefined
-    let timeoutMs = init.timeout ?? this.options.requestTimeoutMs
+    const timeoutMs = init.timeout ?? this.options.requestTimeoutMs
     if (!init.signal && timeoutMs && timeoutMs > 0) {
       const controller = new AbortController()
       // @ts-ignore
@@ -122,7 +123,10 @@ export class Client {
        * and use the returned value needed
        */
       if (this.options.requestInterceptor) {
-        const res = await this.options.requestInterceptor({ url: _url, init: fetchInit })
+        const res = await this.options.requestInterceptor({
+          url: _url,
+          init: fetchInit
+        })
         if (res) {
           _url = res.url
           fetchInit = res.init
@@ -133,7 +137,10 @@ export class Client {
        * and use the returned value needed
        */
       if (init.requestInterceptor) {
-        const res = await init.requestInterceptor({ url: _url, init: fetchInit })
+        const res = await init.requestInterceptor({
+          url: _url,
+          init: fetchInit
+        })
         if (res) {
           _url = res.url
           fetchInit = res.init
@@ -159,7 +166,11 @@ export class Client {
        * and use the returned value as needed
        */
       if (init.responseInterceptor) {
-        const resp = await init.responseInterceptor({ url: _url, init: fetchInit, response })
+        const resp = await init.responseInterceptor({
+          url: _url,
+          init: fetchInit,
+          response
+        })
         if (resp) {
           response = resp
         }
@@ -172,11 +183,11 @@ export class Client {
     }
   }
 
-  private convertGraphQLResponse(resp: GraphQLResponse, statusCode: number = 200): ClientResponse {
+  private convertGraphQLResponse(resp: GraphQLResponse, statusCode = 200): ClientResponse {
     // If there were no errors returned, the "errors" field should not be present on the response.
     // If no data is returned, according to the GraphQL spec,
     // the "data" field should only be included if no errors occurred during execution.
-    if (resp.errors && resp.errors.length) {
+    if (resp.errors?.length) {
       return {
         error: new ResponseError({
           statusCode,
@@ -569,7 +580,7 @@ export class Client {
     // web-streams, no support in node-fetch or Node.js yet
     const reader = response.body.getReader()
     const decoder = new TextDecoder()
-    let message: string = ''
+    let message = ''
     let lastResponse: GraphQLResponse | null = null
     while (true) {
       let result: ReadableStreamReadResult<Uint8Array>
@@ -726,6 +737,40 @@ export class Client {
     }
   }
 
+  /**
+   * Export a low-level fetch function that can be used to make arbitrary requests
+   */
+
+  public async doRequest(options: LowLevelRequestOptions) {
+    const params = this.searchParams()
+    const url = this.addUrlParams(this.operationUrl(options.operationName), params)
+
+    const headers: Headers = { ...options.headers }
+
+    if (this.shouldIncludeCsrfToken(this.isAuthenticatedOperation(options.operationName))) {
+      headers['X-CSRF-Token'] = await this.getCSRFToken()
+    }
+    const init: FetchOptions = {
+      headers,
+      timeout: options.timeout,
+      signal: options.abortSignal,
+      requestInterceptor: options.requestInterceptor,
+      responseInterceptor: options.responseInterceptor
+    }
+    if (options.customInit) {
+      const customInit = options.customInit?.()
+      if (customInit) {
+        Object.assign(init, customInit)
+      }
+    }
+    const resp = await this.fetch(url, {
+      method: init.method || this.options.forceMethod || 'POST',
+      ...init
+    })
+
+    return this.fetchResponseToClientResponse(resp)
+  }
+
   /***
    * fetchUser makes a GET request to the server to fetch the current user.
    * The method throws an error if the request fails to reach the server or
@@ -751,7 +796,7 @@ export class Client {
       throw await this.handleClientResponseError(response)
     }
 
-    if (response.status == 204) {
+    if (response.status === 204) {
       this.userIsAuthenticated = false
       // No user is signed in. Keep this in sync with pkg/authentication/authentication.go
       throw new NoUserError({ statusCode: response.status })

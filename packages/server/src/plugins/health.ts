@@ -10,7 +10,10 @@ const startTime = new Date().toISOString()
 
 let onStartUpCalled = false
 
-export const FireboomHealthPlugin: FastifyPluginAsync = async (fastify, hooks?: { onStartUp?: VoidFunction }) => {
+export const FireboomHealthPlugin: FastifyPluginAsync = async (
+  fastify,
+  hooks?: { onStartUp?: VoidFunction }
+) => {
   fastify.get<{ Reply: Health }>(Endpoint.Health, async (request, reply) => {
     if (!onStartUpCalled) {
       onStartUpCalled = true

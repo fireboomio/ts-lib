@@ -107,13 +107,20 @@ export type QueryRequestOptions<
   OperationName extends string = any,
   Input extends object | undefined = object | undefined
 > = WithInput<Input, OperationRequestOptions<OperationName, Input>> & {
-  subscribeOnce?: Boolean
+  subscribeOnce?: boolean
 }
 
 export type MutationRequestOptions<
   OperationName extends string = any,
   Input extends object | undefined = object | undefined
 > = WithInput<Input, OperationRequestOptions<OperationName, Input>>
+
+export type LowLevelRequestOptions<OperationName extends string = any> = Omit<
+  OperationRequestOptions<OperationName, undefined>,
+  'input'
+> & {
+  customInit?: () => FetchOptions
+}
 
 export type SubscriptionRequestOptions<
   OperationName extends string = any,
@@ -122,11 +129,11 @@ export type SubscriptionRequestOptions<
   /**
    * Subscribe to a live query
    */
-  liveQuery?: Boolean
+  liveQuery?: boolean
   /**
    * Receive the initial response and then stop the subscription
    */
-  subscribeOnce?: Boolean
+  subscribeOnce?: boolean
 }
 
 export type SubscriptionResult = {
