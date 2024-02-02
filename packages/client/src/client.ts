@@ -758,7 +758,7 @@ export class Client {
       responseInterceptor: options.responseInterceptor
     }
     if (options.customInit) {
-      const customInit = options.customInit?.()
+      const customInit = options.customInit?.(init)
       if (customInit) {
         Object.assign(init, customInit)
       }

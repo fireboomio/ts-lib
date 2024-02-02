@@ -119,7 +119,7 @@ export type LowLevelRequestOptions<OperationName extends string = any> = Omit<
   OperationRequestOptions<OperationName, undefined>,
   'input'
 > & {
-  customInit?: () => FetchOptions
+  customInit?: (init: Pick<FetchOptions, 'headers' | 'timeout' | 'signal' | 'requestInterceptor' | 'responseInterceptor'>) => FetchOptions
 }
 
 export type SubscriptionRequestOptions<
