@@ -768,7 +768,7 @@ export class Client {
       ...init
     })
 
-    return this.fetchResponseToClientResponse(resp)
+    return resp
   }
 
   /***
