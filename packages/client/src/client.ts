@@ -84,7 +84,9 @@ export class Client {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     }
-
+    if (init.body && init.body instanceof FormData) {
+      delete init.headers!['Content-Type']
+    }
     return this.fetch(url, init)
   }
 
@@ -405,6 +407,19 @@ export class Client {
   ): Promise<ClientResponse<Data, Error>> {
     const params = this.searchParams()
     const url = this.addUrlParams(this.operationUrl(options.operationName), params)
+    let body: string | FormData | undefined = this.stringifyInput(options.input)
+
+    if (options.input) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      if (Object.keys(options.input).some(key => options.input![key] instanceof File)) {
+        body = new FormData()
+        for (const key in options.input) {
+          if (options.input[key] instanceof File) {
+            body.append(key, options.input[key])
+          }
+        }
+      }
+    }
 
     const headers: Headers = { ...options.headers }
 
@@ -415,7 +430,7 @@ export class Client {
     const resp = await this.fetchJson(url, {
       method: this.options.forceMethod || 'POST',
       signal: options.abortSignal,
-      body: this.stringifyInput(options.input),
+      body,
       headers,
       timeout: options.timeout,
       requestInterceptor: options.requestInterceptor,
