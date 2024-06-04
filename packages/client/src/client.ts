@@ -652,8 +652,7 @@ export class Client {
   ): Promise<UploadResponse> {
     this.validateFiles(config, validation)
     const formData = new FormData()
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    for (const [_, file] of Object.entries(config.files)) {
+    for (const file of config.files) {
       if (file instanceof Blob) {
         formData.append('files', file)
       }

@@ -55,7 +55,7 @@ export type UploadRequestOptions<
       profile: ProfileName
     }) & {
   provider: ProviderName
-  files: FileList
+  files: FileList | File[]
   abortSignal?: AbortSignal
   directory?: string
   meta?: Meta
