@@ -58,6 +58,7 @@ export type UploadRequestOptions<
   files: FileList | File[]
   abortSignal?: AbortSignal
   directory?: string
+  keepOriginName?: boolean
   meta?: Meta
 }
 

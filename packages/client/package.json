@@ -1,6 +1,6 @@
 {
   "name": "@fireboom/client",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "types": "dist/index.d.ts",

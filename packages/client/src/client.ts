@@ -670,6 +670,9 @@ export class Client {
     if (config.directory) {
       params.append('directory', config.directory)
     }
+    if (config.keepOriginName) {
+      params.append('keepOriginName', '1')
+    }
 
     if ('profile' in config) {
       headers['X-Upload-Profile'] = (config as any).profile
