@@ -93,7 +93,7 @@ export async function startServer(
     const entries = await glob(
       resolve(
         process.cwd(),
-        `./{customize,function,global,operation,storage,proxy}/**/*.${
+        `./{authentication,customize,function,global,operation,upload,proxy}/**/*.${
           process.env.NODE_ENV === 'production' ? 'js' : 'ts'
         }`
       )
